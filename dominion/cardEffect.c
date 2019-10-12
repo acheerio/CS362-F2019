@@ -55,7 +55,7 @@ int baronEffect(int card, int choice1, int choice2, int choice3, struct gameStat
 }
 
 int minionEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus) {
-	        //+1 action
+        //+1 action
         state->numActions++;
 
         //discard card from hand
