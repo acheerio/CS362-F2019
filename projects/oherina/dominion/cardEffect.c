@@ -1,6 +1,11 @@
-#include "card_effect.h"
+#include "cardEffect.h"
+#include "dominion_helpers.h"
+#include <stdio.h>
 
 int baronEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus) {
+    
+    int currentPlayer = whoseTurn(state);
+
 	state->numBuys++;//Increase buys by 1!
 	if (choice1 > 0) { //Boolean true or going to discard an estate
 	    int p = 0;//Iterator for hand!
@@ -55,6 +60,10 @@ int baronEffect(int card, int choice1, int choice2, int choice3, struct gameStat
 }
 
 int minionEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus) {
+        
+        int currentPlayer = whoseTurn(state);
+        int i;
+
         //+1 action
         state->numActions++;
 
@@ -93,6 +102,7 @@ int minionEffect(int card, int choice1, int choice2, int choice3, struct gameSta
                         }
 
                         //draw 4
+                        int j;
                         for (j = 0; j < 4; j++)
                         {
                             drawCard(i, state);
@@ -106,7 +116,11 @@ int minionEffect(int card, int choice1, int choice2, int choice3, struct gameSta
 }
 
 int ambassadorEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus) {
-	    j = 0;		//used to check if player has enough cards to discard
+
+        int currentPlayer = whoseTurn(state);
+        int i;
+
+	    int j = 0;		//used to check if player has enough cards to discard
 
         if (choice2 > 2 || choice2 < 0)
         {
@@ -165,6 +179,15 @@ int ambassadorEffect(int card, int choice1, int choice2, int choice3, struct gam
 }
 
 int tributeEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus) {
+
+    int currentPlayer = whoseTurn(state);
+    int nextPlayer = currentPlayer + 1; // TODO: some code reuse here
+    if (nextPlayer > (state->numPlayers - 1)) {
+        nextPlayer = 0;
+    }
+    int tributeRevealedCards[2] = {-1, -1};
+    int i;
+
 	if ((state->discardCount[nextPlayer] + state->deckCount[nextPlayer]) <= 1) {
 	    if (state->deckCount[nextPlayer] > 0) {
 	        tributeRevealedCards[0] = state->deck[nextPlayer][state->deckCount[nextPlayer]-1];
@@ -225,6 +248,10 @@ int tributeEffect(int card, int choice1, int choice2, int choice3, struct gameSt
 }
 
 int mineEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus) {
+
+    int currentPlayer = whoseTurn(state);
+    int i;
+
     j = state->hand[currentPlayer][choice1];  //store card we will trash
 
     if (state->hand[currentPlayer][choice1] < copper || state->hand[currentPlayer][choice1] > gold)
