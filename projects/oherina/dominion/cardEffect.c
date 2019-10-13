@@ -2,7 +2,7 @@
 #include "dominion_helpers.h"
 #include <stdio.h>
 
-int baronEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus) {
+int baronEffect(int card, int choice1, struct gameState *state, int handPos) {
     
     int currentPlayer = whoseTurn(state);
 
@@ -59,7 +59,7 @@ int baronEffect(int card, int choice1, int choice2, int choice3, struct gameStat
 	return 0;
 }
 
-int minionEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus) {
+int minionEffect(int card, int choice1, int choice2, struct gameState *state, int handPos) {
         
         int currentPlayer = whoseTurn(state);
         int i;
@@ -115,7 +115,7 @@ int minionEffect(int card, int choice1, int choice2, int choice3, struct gameSta
         return 0;
 }
 
-int ambassadorEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus) {
+int ambassadorEffect(int card, int choice1, int choice2, struct gameState *state, int handPos) {
 
         int currentPlayer = whoseTurn(state);
         int i;
@@ -178,7 +178,7 @@ int ambassadorEffect(int card, int choice1, int choice2, int choice3, struct gam
         return 0;
 }
 
-int tributeEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus) {
+int tributeEffect(int card, struct gameState *state, int handPos) {
 
     int currentPlayer = whoseTurn(state);
     int nextPlayer = currentPlayer + 1; // TODO: some code reuse here
@@ -247,7 +247,7 @@ int tributeEffect(int card, int choice1, int choice2, int choice3, struct gameSt
 	return 0;
 }
 
-int mineEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus) {
+int mineEffect(int card, int choice1, int choice2, struct gameState *state, int handPos) {
 
     int currentPlayer = whoseTurn(state);
     int i;

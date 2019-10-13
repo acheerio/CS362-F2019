@@ -19,8 +19,7 @@ struct gameState* newGame() {
     return g;
 }
 
-int* kingdomCards(int k1, int k2, int k3, int k4, int k5, int k6, int k7,
-                  int k8, int k9, int k10) {
+int* kingdomCards(int k1, int k2, int k3, int k4, int k5, int k6, int k7, int k8, int k9, int k10) {
     int* k = malloc(10 * sizeof(int));
     k[0] = k1;
     k[1] = k2;
@@ -35,8 +34,7 @@ int* kingdomCards(int k1, int k2, int k3, int k4, int k5, int k6, int k7,
     return k;
 }
 
-int initializeGame(int numPlayers, int kingdomCards[10], int randomSeed,
-                   struct gameState *state) {
+int initializeGame(int numPlayers, int kingdomCards[10], int randomSeed, struct gameState *state) {
     int i;
     int j;
     int it;
@@ -231,8 +229,7 @@ int shuffle(int player, struct gameState *state) {
     return 0;
 }
 
-int playCard(int handPos, int choice1, int choice2, int choice3, struct gameState *state)
-{
+int playCard(int handPos, int choice1, int choice2, int choice3, struct gameState *state) {
     int card;
     int coin_bonus = 0; 		//tracks coins gain from actions
 
@@ -807,7 +804,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
         return -1;
 
     case mine:
-        return mineEffect(card, choice1, choice2, choice3, state, handPos, bonus);
+        return mineEffect(card, choice1, choice2, state, handPos);
 
     case remodel:
         j = state->hand[currentPlayer][choice1];  //store card we will trash
@@ -858,8 +855,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
         return 0;
 
     case baron:
-        return baronEffect(card, choice1, choice2, choice3, state, handPos, bonus);
-
+        return baronEffect(card, choice1, state, handPos);
     case great_hall:
         //+1 Card
         drawCard(currentPlayer, state);
@@ -872,7 +868,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
         return 0;
 
     case minion:
-        return minionEffect(card, choice1, choice2, choice3, state, handPos, bonus);
+        return minionEffect(card, choice1, choice2, state, handPos);
 
     case steward:
         if (choice1 == 1)
@@ -898,10 +894,10 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
         return 0;
 
     case tribute:
-        return tributeEffect(card, choice1, choice2, choice3, state, handPos, bonus);
+        return tributeEffect(card, state, handPos);
 
     case ambassador:
-        return ambassadorEffect(card, choice1, choice2, choice3, state, handPos, bonus);
+        return ambassadorEffect(card, choice1, choice2, state, handPos);
 
     case cutpurse:
 
