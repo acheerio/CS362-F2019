@@ -251,6 +251,7 @@ int mineEffect(int card, int choice1, int choice2, int choice3, struct gameState
 
     int currentPlayer = whoseTurn(state);
     int i;
+    int j;
 
     j = state->hand[currentPlayer][choice1];  //store card we will trash
 
