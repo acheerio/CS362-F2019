@@ -6,7 +6,7 @@ rngs.o: rngs.h rngs.c
 cardEffect.o: cardEffect.h cardEffect.c
 	gcc -c cardEffect.c -g $(CFLAGS)
 
-dominion.o: dominion.h dominion.c rngs.o
+dominion.o: dominion.h dominion.c rngs.o cardEffect.o
 	gcc -c dominion.c -g  $(CFLAGS)
 
 playdom: dominion.o playdom.c
