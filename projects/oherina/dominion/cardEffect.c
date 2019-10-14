@@ -46,7 +46,7 @@ int baronEffect(int card, int choice1, struct gameState *state, int handPos) {
 
     // if choice1 is false, the player chose to gain an estate
 	else {
-	    if (supplyCount(estate, state) >= 0) {
+	    if (supplyCount(estate, state) > 0) {
 	        gainCard(estate, state, 0, currentPlayer);//Gain an estate
 
 	        state->supplyCount[estate]--;//Decrement Estates
@@ -223,7 +223,7 @@ int tributeEffect(int card, struct gameState *state, int handPos) {
 	    state->deckCount[nextPlayer]--;
 	}
 
-	if (tributeRevealedCards[0] == tributeRevealedCards[1]) { //If we have a duplicate card, just drop one
+	if (tributeRevealedCards[0] != tributeRevealedCards[1]) { //If we have a duplicate card, just drop one
 	    state->playedCards[state->playedCardCount] = tributeRevealedCards[1];
 	    state->playedCardCount++;
 	    tributeRevealedCards[1] = -1;
@@ -248,13 +248,13 @@ int tributeEffect(int card, struct gameState *state, int handPos) {
 
 int mineEffect(int card, int choice1, int choice2, struct gameState *state, int handPos) {
 
-    int currentPlayer = whoseTurn(state);
+    int currentPlayer = 0;
     int i;
     int j;
 
     j = state->hand[currentPlayer][choice1];  // store card we will trash
 
-    if (state->hand[currentPlayer][choice1] < copper || state->hand[currentPlayer][choice1] > gold)
+    if (state->hand[currentPlayer][choice1] < silver || state->hand[currentPlayer][choice1] > gold)
     {
         return -1;
     }
