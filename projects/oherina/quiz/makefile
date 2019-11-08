@@ -1,7 +1,10 @@
 CC=gcc
 CFLAGS= -fprofile-arcs -ftest-coverage
 
-all: testme
+all: run
+
+run: testme
+	./testme
 
 testme:
 	$(CC) $(CFLAGS) testme.c -o testme
