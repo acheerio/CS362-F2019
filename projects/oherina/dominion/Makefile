@@ -24,11 +24,41 @@ runtests: testDrawCard
 	gcov dominion.c >> unittestresult.out
 	cat dominion.c.gcov >> unittestresult.out
 
-
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o cardEffect.o interface.o $(CFLAGS)
+
+assert.o: assert.c assert.h
+	gcc -c assert.c -g $(CFLAGS)
+
+unittest1: unittest1.c dominion.o assert.o rngs.o
+	gcc -o unittest1 -g unittest.c dominion.o assert.o rngs.o $(CFLAGS)
+
+unittest2: unittest2.c dominion.o assert.o rngs.o
+	gcc -o unittest2 -g unittest.c dominion.o assert.o rngs.o $(CFLAGS)
+
+unittest3: unittest3.c dominion.o assert.o rngs.o
+	gcc -o unittest3 -g unittest.c dominion.o assert.o rngs.o $(CFLAGS)
+	
+unittest4: unittest4.c dominion.o assert.o rngs.o
+	gcc -o unittest4 -g unittest.c dominion.o assert.o rngs.o $(CFLAGS)
+	
+unittest5: unittest5.c dominion.o assert.o rngs.o
+	gcc -o unittest5 -g unittest.c dominion.o assert.o rngs.o $(CFLAGS)
+
+run-tests: unittest1 unittest2 unittest3 unittest4 unittest5
+	./unittest1 &> assign3-results.out
+	./unittest2 &>> assign3-results.out
+	./unittest3 &>> assign3-results.out
+	./unittest4 &>> assign3-results.out
+	./unittest5 &>> assign3-results.out
+	gcov -b -f cardEffects.c >> assign3-results.out
+	cat cardEffects.c.gcov >> assign3-results.out
 
 all: playdom player 
 
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
+
+clean-tests:
+	rm -f *.o *.gcov *.gcda *.gcno unittest1 unittest2 unittest3 unittest4 unittest5
+	rm -i assign3-results.out
