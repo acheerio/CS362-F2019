@@ -51,8 +51,8 @@ run-tests: unittest1 unittest2 unittest3 unittest4 unittest5
 	./unittest3 &>> assign3-results.out
 	./unittest4 &>> assign3-results.out
 	./unittest5 &>> assign3-results.out
-	gcov -b -f cardEffects.c >> assign3-results.out
-	cat cardEffects.c.gcov >> assign3-results.out
+	gcov -b -f cardEffect.c >> assign3-results.out
+	cat cardEffect.c.gcov >> assign3-results.out
 
 all: playdom player 
 
