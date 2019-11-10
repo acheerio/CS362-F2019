@@ -32,7 +32,7 @@ void baronTest1(struct gameState state) {
 	printf("2) Baron card moved out of player's hand.\n");
 	assert("Baron removed from hand.", hasCard(state.whoseTurn, baron, state), FALSE);
 	assert("Played cards incremented.", state.playedCardCount, playedCardCountExpected);
-	assert("Baron placed at top of played cards.", state.playedCards[state.playedCardCount], baron);
+	assert("Baron placed at top of played cards.", state.playedCards[state.playedCardCount - 1], baron);
 	
 	printf("3) Estate card discarded.\n");
 	assert("Estate card removed from hand.", hasCard(state.whoseTurn, estate, state), FALSE);
@@ -73,7 +73,7 @@ void baronTest2(struct gameState state) {
 	printf("2) Baron card moved out of player's hand.\n");
 	assert("Baron removed from hand.", hasCard(state.whoseTurn, baron, state), FALSE);
 	assert("Played cards incremented.", state.playedCardCount, playedCardCountExpected);
-	assert("Baron placed at top of played cards.", state.playedCards[state.playedCardCount], baron);
+	assert("Baron placed at top of played cards.", state.playedCards[state.playedCardCount - 1], baron);
 	
 	printf("3) Estate card discarded.\n");
 	assert("Estate card removed from hand.", hasCard(state.whoseTurn, estate, state), FALSE);
@@ -116,7 +116,7 @@ void baronTest3(struct gameState state) {
 	printf("2) Baron card moved out of player's hand.\n");
 	assert("Baron removed from hand.", hasCard(state.whoseTurn, baron, state), FALSE);
 	assert("Played cards incremented.", state.playedCardCount, playedCardCountExpected);
-	assert("Baron placed at top of played cards.", state.playedCards[state.playedCardCount], baron);
+	assert("Baron placed at top of played cards.", state.playedCards[state.playedCardCount - 1], baron);
 	
 	printf("3) Estate card gained to discard.\n");
 	assert("Number of estates in supply decreased 1.", state.supplyCount[estate], expectedEstateCount);
@@ -158,7 +158,7 @@ void baronTest4(struct gameState state) {
 	printf("2) Baron card moved out of player's hand.\n");
 	assert("Baron removed from hand.", hasCard(state.whoseTurn, baron, state), FALSE);
 	assert("Played cards incremented.", state.playedCardCount, playedCardCountExpected);
-	assert("Baron placed at top of played cards.", state.playedCards[state.playedCardCount], baron);
+	assert("Baron placed at top of played cards.", state.playedCards[state.playedCardCount - 1], baron);
 	
 	printf("3) Estate card gained to discard.\n");
 	assert("Number of estates in supply decreased 1.", state.supplyCount[estate], expectedEstateCount);
@@ -200,7 +200,7 @@ void baronTest5(struct gameState state) {
 	printf("2) Baron card moved out of player's hand.\n");
 	assert("Baron removed from hand.", hasCard(state.whoseTurn, baron, state), FALSE);
 	assert("Played cards incremented.", state.playedCardCount, playedCardCountExpected);
-	assert("Baron placed at top of played cards.", state.playedCards[state.playedCardCount], baron);
+	assert("Baron placed at top of played cards.", state.playedCards[state.playedCardCount - 1], baron);
 	
 	printf("3) Estate card not gained to discard.\n");
 	assert("Number of estates in supply unchanged.", state.supplyCount[estate], expectedEstateCount);
@@ -243,7 +243,7 @@ void baronTest6(struct gameState state) {
 	printf("2) Baron card moved out of player's hand.\n");
 	assert("Baron removed from hand.", hasCard(state.whoseTurn, baron, state), FALSE);
 	assert("Played cards incremented.", state.playedCardCount, playedCardCountExpected);
-	assert("Baron placed at top of played cards.", state.playedCards[state.playedCardCount], baron);
+	assert("Baron placed at top of played cards.", state.playedCards[state.playedCardCount - 1], baron);
 	
 	printf("3) Estate card gained to discard.\n");
 	assert("Number of estates in supply decreased 1.", state.supplyCount[estate], expectedEstateCount);
@@ -285,7 +285,7 @@ void baronTest7(struct gameState state) {
 	printf("2) Baron card moved out of player's hand.\n");
 	assert("Baron removed from hand.", hasCard(state.whoseTurn, baron, state), FALSE);
 	assert("Played cards incremented.", state.playedCardCount, playedCardCountExpected);
-	assert("Baron placed at top of played cards.", state.playedCards[state.playedCardCount], baron);
+	assert("Baron placed at top of played cards.", state.playedCards[state.playedCardCount - 1], baron);
 	
 	printf("3) Estate card gained to discard.\n");
 	assert("Number of estates in supply decreased 1.", state.supplyCount[estate], expectedEstateCount);
@@ -327,7 +327,7 @@ void baronTest8(struct gameState state) {
 	printf("2) Baron card moved out of player's hand.\n");
 	assert("Baron removed from hand.", hasCard(state.whoseTurn, baron, state), FALSE);
 	assert("Played cards incremented.", state.playedCardCount, playedCardCountExpected);
-	assert("Baron placed at top of played cards.", state.playedCards[state.playedCardCount], baron);
+	assert("Baron placed at top of played cards.", state.playedCards[state.playedCardCount - 1], baron);
 	
 	printf("3) Estate card not gained to discard.\n");
 	assert("Number of estates in supply unchanged.", state.supplyCount[estate], expectedEstateCount);
