@@ -29,7 +29,7 @@ void minionTest1(struct gameState state) {
 	int result = minionEffect(card, choice1, choice2, &state, handPos);
 	
 	printf("1) Function successful.\n");
-	assert("Function returns >= 0 (Success)", result >= 0, 0);
+	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
 	
 	printf("2) Minion card played.\n");
 	assert("Minion removed from hand.", hasCard(state.whoseTurn, minion, state), FALSE);
