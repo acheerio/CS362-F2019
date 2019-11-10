@@ -314,7 +314,7 @@ void testBaron() {
 	baronTest2(G);
 	baronTest3(G);
 	baronTest4(G);
-	//baronTest5(G);
+	baronTest5(G);
 	baronTest6(G);
 	baronTest7(G);
 	//baronTest8(G);
