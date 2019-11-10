@@ -180,6 +180,69 @@ void minionTest3(struct gameState state) {
 }
 void minionTest4(struct gameState state) {
 	printf("Minion - currentPlayer has cards to discard before redraw, other player has 4 cards so no discard.\n");
+	
+	state.whoseTurn = 0;
+	// current player's hand = minion, copper
+	state.hand[state.whoseTurn][0] = minion;
+	state.hand[state.whoseTurn][1] = copper;
+	// next player's hand = copper, copper, copper, copper, copper
+	int nextPlayerHandCount = 4;
+	fillHand(state.whoseTurn + 1, copper, nextPlayerHandCount, &state);
+	
+	// unchanged: coins
+	state.coins = 2;
+	int coinsExpected = state.coins;
+	// unchanged: next player's hand and discard
+	int nextPlayerHandCountExpected = nextPlayerHandCount; // no cards drawn
+	state.discardCount[state.whoseTurn + 1] = 0;
+	int nextPlayerDiscardCountExpected = state.discardCount[state.whoseTurn + 1]; // no discard
+	
+	// changed: played cards + 1, current player's hand count = 4, current player's discard + 1
+	state.playedCardCount = 0;
+	int playedCardCountExpected = state.playedCardCount + 1;
+	state.handCount[state.whoseTurn] = 2;
+	int handCountExpected = 4;
+	state.discardCount[state.whoseTurn] = 0;
+	int discardCountExpected = state.discardCount[state.whoseTurn] + 1;
+	// changed state: numActions + 1
+	state.numActions = 1;
+	int numActionsExpected = state.numActions + 1;
+	
+	int card = minion;
+	int choice1 = 0; 
+	int choice2 = 1; // chose to discard and redraw
+	int handPos = 0; // minion card in position 0
+	
+	int result = minionEffect(card, choice1, choice2, &state, handPos);
+	
+	printf("1) Function successful.\n");
+	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
+	
+	printf("2) Minion card played.\n");
+	assert("Minion removed from hand.", hasCard(state.whoseTurn, minion, state), FALSE);
+	assert("Played cards +1.", state.playedCardCount, playedCardCountExpected);
+	assert("Minion placed at top of played cards.", state.playedCards[state.playedCardCount - 1], minion);
+	
+	printf("3) Current player card discarded.\n");
+	assert("Number of cards in discard +1.", state.discardCount[state.whoseTurn], discardCountExpected);
+	assert("Copper at top of discard pile.", state.discard[state.whoseTurn][state.discardCount[state.whoseTurn] - 1], copper);
+	
+	printf("4) Current player correct number of cards in hand.\n");
+	assert("Four cards in hand.", state.handCount[state.whoseTurn], handCountExpected);
+	
+	printf("5) Other player full hand discarded.\n");
+	assert("Number of cards in discard = previous hand count.", state.discardCount[state.whoseTurn + 1], nextPlayerDiscardCountExpected);
+	
+	printf("6) Other player correct number of cards in hand.\n");
+	assert("Four cards in hand.", state.handCount[state.whoseTurn + 1], nextPlayerHandCountExpected);
+	
+	printf("7) No coins gained.\n");
+	assert("+0 Coins", state.coins, coinsExpected);
+	
+	printf("8) +1 Action.\n");
+	assert("Actions incremented by 1", state.numActions, numActionsExpected);
+	
+	printf("\n\n");
 }
 void minionTest5(struct gameState state) {
 	printf("Minion - currentPlayer has cards to discard before redraw, other player has > 4 cards so discard.\n");
