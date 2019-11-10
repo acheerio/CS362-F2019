@@ -132,7 +132,6 @@ void baronTest4(struct gameState state) {
 }
 
 void baronTest6(struct gameState state) {
-	void baronTest3(struct gameState state) {
 	printf("Baron - choose not to discard estate, estate in supply > 1.\n");
 	// set up state - currentPlayer 0 with hand: baron
 	// supplyCount[estate] set to 8 by default in initializeGame for 2 players
