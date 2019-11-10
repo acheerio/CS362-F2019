@@ -19,7 +19,7 @@ void mineTest2(struct gameState state) {
 	state.handCount[state.whoseTurn] = 2;
 	int handCountExpected = state.handCount[state.whoseTurn] - 1;
 	state.hand[state.whoseTurn][0] = mine;
-	state.hand[state.whoseTurn][0] = silver;
+	state.hand[state.whoseTurn][1] = silver;
 	int handPos = 0; // played card in position 0
 	int cardToTrash = silver;
 	
@@ -72,7 +72,7 @@ void mineTest3(struct gameState state) {
 	state.handCount[state.whoseTurn] = 2;
 	int handCountExpected = state.handCount[state.whoseTurn] - 1;
 	state.hand[state.whoseTurn][0] = mine;
-	state.hand[state.whoseTurn][0] = copper;
+	state.hand[state.whoseTurn][1] = copper;
 	int handPos = 0; // played card in position 0
 	int cardToTrash = copper;
 	
