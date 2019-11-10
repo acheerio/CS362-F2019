@@ -3,11 +3,11 @@
 
 bool assert(char * assertion, int a, int b) {
 	if (a == b) {
-		printf("%s PASSED!\n\n", assertion);
+		printf("   PASSED: %s\n", assertion);
 		return TRUE;
 	}
 	else {
-		printf("ERROR: %s FAILED!\n\n", assertion);
+		printf("   FAILED: %s FAILED!\n\n", assertion);
 		return FALSE;
 	}
 }
