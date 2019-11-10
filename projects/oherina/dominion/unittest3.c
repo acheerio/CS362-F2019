@@ -8,6 +8,10 @@
 void mineTest1(struct gameState state) {
 	printf("choice1 and choice2 are valid, choice2 cost < choice1 cost");
 	
+}
+void mineTest2(struct gameState state) {
+	printf("choice1 and choice2 are valid, choice2 cost = choice1 cost + 3");
+	
 	state.whoseTurn = 0;
 	
 	// current player's hand = mine copper
@@ -56,10 +60,6 @@ void mineTest1(struct gameState state) {
 	assert("Hand count -1.", state.handCount[state.whoseTurn], handCountExpected);
 	
 	printf("\n\n");
-}
-void mineTest2(struct gameState state) {
-	printf("choice1 and choice2 are valid, choice2 cost = choice1 cost + 3");
-	state.whoseTurn = 0;
 }
 
 void mineTest3(struct gameState state) {
