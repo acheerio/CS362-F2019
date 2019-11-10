@@ -71,7 +71,7 @@ void minionTest2(struct gameState state) {
 	state.playedCardCount = 0;
 	int playedCardCountExpected = state.playedCardCount + 1;
 	state.handCount[state.whoseTurn] = 1;
-	int expectedHandCount = state.handCount[state.whoseTurn] - 1;
+	int handCountExpected = state.handCount[state.whoseTurn] - 1;
 	
 	int card = minion;
 	int choice1 = 0; 
