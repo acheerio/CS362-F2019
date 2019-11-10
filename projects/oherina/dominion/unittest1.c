@@ -31,7 +31,7 @@ void baronTest1(struct gameState state) {
 	int choice1 = 1; // choose to discard estate
 	int handPos = 1; // baron card in position 1
 	
-	int result = baronEffect(card, choice1, &G, handPos);
+	int result = baronEffect(card, choice1, &state, handPos);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns 0 (Success)", result, 0);
