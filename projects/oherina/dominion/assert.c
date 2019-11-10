@@ -22,3 +22,11 @@ bool hasCard(int player, int card, struct gameState state) {
 	}
 	return hasCard;
 }
+
+void fillHand(int player, int card, int count, struct gameState *state) {
+	state->handCount[player] = count;
+	int i;
+	for (i = 0; i < state->handCount[player]; i++) {
+		state->hand[player][i] = card;
+	}
+}
