@@ -39,9 +39,7 @@ void minionTest1(struct gameState state) {
 	assert("Minion placed at top of played cards.", state.playedCards[state.playedCardCount - 1], minion);
 	
 	printf("3) No cards discarded.\n");
-	// assert("Estate card removed from hand.", hasCard(state.whoseTurn, estate, state), FALSE);
 	assert("Number of cards in discard unchanged.", state.discardCount[state.whoseTurn], discardCountExpected);
-	// assert("Estate card at top of discard pile.", state.discard[state.whoseTurn][state.discardCount[state.whoseTurn]], estate);
 	
 	printf("4) Two coins gained.\n");
 	assert("+2 Coins", state.coins, coinsExpected);
