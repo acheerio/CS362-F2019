@@ -336,8 +336,8 @@ void minionTest6(struct gameState state) {
 	int coinsExpected = state.coins;
 	
 	int card = minion;
-	int choice1 = 0; 
-	int choice2 = 1; // chose to discard and redraw
+	int choice1 = 1; 
+	int choice2 = 1;
 	int handPos = 0; // minion card in position 0
 	
 	int result = minionEffect(card, choice1, choice2, &state, handPos);
@@ -396,7 +396,7 @@ void minionTest7(struct gameState state) {
 	
 	int card = minion;
 	int choice1 = 0; 
-	int choice2 = 1; // chose to discard and redraw
+	int choice2 = 0;
 	int handPos = 0; // minion card in position 0
 	
 	int result = minionEffect(card, choice1, choice2, &state, handPos);
