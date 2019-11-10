@@ -4,18 +4,6 @@
 #include "assert.h"
 #include <stdlib.h>
 #include <stdio.h>
-// unittest1
-
-void testBaron() {
-	int seed = 1; // need some constant here that's deterministic (vs seeding by time)
-	int numPlayer = 2;
-	int k[10] = {adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall};
-	struct gameState G;
-	initializeGame(numPlayer, k, seed, &G); // initialize a new game
-	
-	// calling tests and passing by value since we want gameState unchanged
-	baronTest1(G);
-}
 
 void baronTest1(struct gameState state) {
 	printf("Baron - choose to discard estate, estate is first card.\n");
@@ -46,6 +34,17 @@ void baronTest1(struct gameState state) {
 	
 	printf("4) Four coins gained.\n");
 	assert("+4 Coins", state.coins, coinsExpected);
+}
+
+void testBaron() {
+	int seed = 1; // need some constant here that's deterministic (vs seeding by time)
+	int numPlayer = 2;
+	int k[10] = {adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall};
+	struct gameState G;
+	initializeGame(numPlayer, k, seed, &G); // initialize a new game
+	
+	// calling tests and passing by value since we want gameState unchanged
+	baronTest1(G);
 }
 
 int main() {
