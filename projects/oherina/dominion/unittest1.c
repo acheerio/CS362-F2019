@@ -29,15 +29,18 @@ void testBaron() {
 	int result = baronEffect(card, choice1, &G, handPos);
 	
 	printf("Function successful.\n");
-	assert("   Function returns 0 (Success)\n", result, 0);
+	assert("Function returns 0 (Success)\n", result, 0);
+	
 	printf("Baron card moved out of player's hand.\n");
-	assert("   Baron removed from hand.\n", hasCard(G.whoseTurn, baron, G), FALSE);
-	assert("   Baron placed at top of played cards.\n", G.playedCards[G.playedCardCount], baron);
+	assert("Baron removed from hand.\n", hasCard(G.whoseTurn, baron, G), FALSE);
+	assert("Baron placed at top of played cards.\n", G.playedCards[G.playedCardCount], baron);
+	
 	printf("Estate card discarded.\n");
-	assert("   Estate card removed from hand.\n", hasCard(G.whoseTurn, estate, G), FALSE);
-	assert("   Estate card discarded.\n", G.discard[G.whoseTurn][G.discardCount[G.whoseTurn]], estate);
+	assert("Estate card removed from hand.\n", hasCard(G.whoseTurn, estate, G), FALSE);
+	assert("Estate card discarded.\n", G.discard[G.whoseTurn][G.discardCount[G.whoseTurn]], estate);
+	
 	printf("Four coins gained.\n");
-	assert("   +4 Coins", G.coins, coinsExpected);
+	assert("+4 Coins", G.coins, coinsExpected);
 }
 
 int main() {
