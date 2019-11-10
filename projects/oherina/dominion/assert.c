@@ -7,7 +7,7 @@ bool assert(char * assertion, int a, int b) {
 		return TRUE;
 	}
 	else {
-		printf("   FAILED: %s FAILED!\n\n", assertion);
+		printf("   FAILED: %s\n", assertion);
 		return FALSE;
 	}
 }

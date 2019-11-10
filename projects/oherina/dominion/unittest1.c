@@ -13,7 +13,7 @@ void testBaron() {
 	struct gameState G;
 	initializeGame(numPlayer, k, seed, &G); // initialize a new game
 	
-	printf("Baron - choose to discard estate, estate is first card.");
+	printf("Baron - choose to discard estate, estate is first card.\n");
 	// set up state - currentPlayer 0 with hand: estate, baron
 	G.whoseTurn = 0;
 	G.coins = 2;
@@ -28,18 +28,18 @@ void testBaron() {
 	
 	int result = baronEffect(card, choice1, &G, handPos);
 	
-	printf("Function successful.\n");
-	assert("Function returns 0 (Success)\n", result, 0);
+	printf("1) Function successful.\n");
+	assert("Function returns 0 (Success)", result, 0);
 	
-	printf("Baron card moved out of player's hand.\n");
-	assert("Baron removed from hand.\n", hasCard(G.whoseTurn, baron, G), FALSE);
-	assert("Baron placed at top of played cards.\n", G.playedCards[G.playedCardCount], baron);
+	printf("2) Baron card moved out of player's hand.\n");
+	assert("Baron removed from hand.", hasCard(G.whoseTurn, baron, G), FALSE);
+	assert("Baron placed at top of played cards.", G.playedCards[G.playedCardCount], baron);
 	
-	printf("Estate card discarded.\n");
-	assert("Estate card removed from hand.\n", hasCard(G.whoseTurn, estate, G), FALSE);
-	assert("Estate card discarded.\n", G.discard[G.whoseTurn][G.discardCount[G.whoseTurn]], estate);
+	printf("3) Estate card discarded.\n");
+	assert("Estate card removed from hand.", hasCard(G.whoseTurn, estate, G), FALSE);
+	assert("Estate card discarded.", G.discard[G.whoseTurn][G.discardCount[G.whoseTurn]], estate);
 	
-	printf("Four coins gained.\n");
+	printf("4) Four coins gained.\n");
 	assert("+4 Coins", G.coins, coinsExpected);
 }
 
