@@ -24,8 +24,9 @@ void minionTest1(struct gameState state) {
 	
 	int card = minion;
 	int choice1 = 1; // chose to gain coins
+	int choice2 = 0;
 	
-	int result = minionEffect(card, choice1, &state, handPos);
+	int result = minionEffect(card, choice1, choice2, &state, handPos);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, 0);
