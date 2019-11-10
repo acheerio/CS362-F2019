@@ -17,7 +17,7 @@ void baronTest1(struct gameState state) {
 	int expectedHandCount = state.handCount[state.whoseTurn] - 2;
 	state.hand[state.whoseTurn][0] = estate;
 	state.hand[state.whoseTurn][1] = baron;
-	discardCount[state.whoseTurn] = 0;
+	state.discardCount[state.whoseTurn] = 0;
 	int discardCountExpected = discardCount[state.whoseTurn] + 1; 
 	
 	int card = baron;
