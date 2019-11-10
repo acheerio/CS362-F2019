@@ -227,6 +227,7 @@ void testBaron() {
 	baronTest1(G);
 	baronTest2(G);
 	baronTest3(G);
+	baronTest4(G);
 	baronTest6(G);
 }
 
