@@ -4,6 +4,6 @@
 typedef enum bool {FALSE, TRUE} bool;
 
 bool assert(char * assertion, int a, int b);
-bool hasCard(int player, int card, struct gameState state);
+bool hasCard(int player, int card, gameState state);
 
 #endif

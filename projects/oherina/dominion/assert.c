@@ -12,11 +12,11 @@ bool assert(char * assertion, int a, int b) {
 	}
 }
 
-bool hasCard(int player, int card, struct gameState state) {
+bool hasCard(int player, int card, gameState state) {
 	bool hasCard = FALSE;
 	int i;
-	for (i = 0; i < state.handCount[currentPlayer]; i++) {
-		if (state.hand[currentPlayer][i] == card) {
+	for (i = 0; i < state.handCount[player]; i++) {
+		if (state.hand[player][i] == card) {
 			hasCard = TRUE;
 		}
 	}
