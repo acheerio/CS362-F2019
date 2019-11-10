@@ -173,6 +173,48 @@ void baronTest4(struct gameState state) {
 	printf("\n\n");
 }
 
+void baronTest5(struct gameState state) {
+	printf("Baron - choose to discard estate, no estate in hand, estate in supply = 0.\n");
+	// set up state - currentPlayer 0 with hand: baron
+	state.supplyCount[estate] = 0; // declare explicitly for clarity/readability
+	int expectedEstateCount = state.supplyCount[estate];
+	state.whoseTurn = 0;
+	state.coins = 2;
+	int coinsExpected = state.coins;
+	state.playedCardCount = 0;
+	int playedCardCountExpected = 1;
+	state.handCount[state.whoseTurn] = 1;
+	int expectedHandCount = state.handCount[state.whoseTurn] - 1;
+	state.hand[state.whoseTurn][0] = baron;
+	state.discardCount[state.whoseTurn] = 1;
+	int discardCountExpected = state.discardCount[state.whoseTurn];
+	int card = baron;
+	int choice1 = 1; // choose to discard estate
+	int handPos = 0; // baron card in position 1
+	
+	int result = baronEffect(card, choice1, &state, handPos);
+	
+	printf("1) Function successful.\n");
+	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
+	
+	printf("2) Baron card moved out of player's hand.\n");
+	assert("Baron removed from hand.", hasCard(state.whoseTurn, baron, state), FALSE);
+	assert("Played cards incremented.", state.playedCardCount, playedCardCountExpected);
+	assert("Baron placed at top of played cards.", state.playedCards[state.playedCardCount], baron);
+	
+	printf("3) Estate card not gained to discard.\n");
+	assert("Number of estates in supply unchanged.", state.supplyCount[estate], expectedEstateCount);
+	assert("Number of discards unchanged.", state.discardCount[state.whoseTurn], discardCountExpected);
+	assert("No estate at top of discards.", state.discard[state.whoseTurn][state.discardCount[state.whoseTurn] - 1] != estate, TRUE);
+	
+	printf("4) No coins gained.\n");
+	assert("+0 Coins", state.coins, coinsExpected);
+	
+	printf("5) Correct number of cards in hand.\n");
+	assert("No cards in hand.", state.handCount[state.whoseTurn], expectedHandCount);
+	printf("\n\n");
+}
+
 void baronTest6(struct gameState state) {
 	printf("Baron - choose to gain estate, estate in supply > 1.\n");
 	// set up state - currentPlayer 0 with hand: baron
@@ -190,7 +232,7 @@ void baronTest6(struct gameState state) {
 	state.discardCount[state.whoseTurn] = 1;
 	int discardCountExpected = state.discardCount[state.whoseTurn] + 1;
 	int card = baron;
-	int choice1 = 0; // choose not to discard estate
+	int choice1 = 0; // choose to gain estate
 	int handPos = 0; // baron card in position 1
 	
 	int result = baronEffect(card, choice1, &state, handPos);
@@ -216,6 +258,50 @@ void baronTest6(struct gameState state) {
 	printf("\n\n");
 }
 
+void baronTest7(struct gameState state) {
+	printf("Baron - choose to gain estate, estate in supply = 1.\n");
+	// set up state - currentPlayer 0 with hand: baron
+	state.supplyCount[estate] = 1; // declare explicitly for clarity/readability
+	int expectedEstateCount = state.supplyCount[estate] - 1;
+	state.whoseTurn = 0;
+	state.coins = 2;
+	int coinsExpected = state.coins;
+	state.playedCardCount = 0;
+	int playedCardCountExpected = 1;
+	state.handCount[state.whoseTurn] = 1;
+	int expectedHandCount = state.handCount[state.whoseTurn] - 1;
+	state.hand[state.whoseTurn][0] = baron;
+	state.discardCount[state.whoseTurn] = 1;
+	int discardCountExpected = state.discardCount[state.whoseTurn] + 1;
+	int card = baron;
+	int choice1 = 0; // choose to gain estate
+	int handPos = 0; // baron card in position 1
+	
+	int result = baronEffect(card, choice1, &state, handPos);
+	
+	printf("1) Function successful.\n");
+	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
+	
+	printf("2) Baron card moved out of player's hand.\n");
+	assert("Baron removed from hand.", hasCard(state.whoseTurn, baron, state), FALSE);
+	assert("Played cards incremented.", state.playedCardCount, playedCardCountExpected);
+	assert("Baron placed at top of played cards.", state.playedCards[state.playedCardCount], baron);
+	
+	printf("3) Estate card gained to discard.\n");
+	assert("Number of estates in supply decreased 1.", state.supplyCount[estate], expectedEstateCount);
+	assert("Correct number of discards.", state.discardCount[state.whoseTurn], discardCountExpected);
+	assert("Estate at top of discard.", state.discard[state.whoseTurn][state.discardCount[state.whoseTurn] - 1], estate);
+	
+	printf("4) No coins gained.\n");
+	assert("+0 Coins", state.coins, coinsExpected);
+	
+	printf("5) Correct number of cards in hand.\n");
+	assert("No cards in hand.", state.handCount[state.whoseTurn], expectedHandCount);
+	printf("\n\n");
+}
+
+void baronTest8(struct gameState state) {}
+
 void testBaron() {
 	int seed = 1; // need some constant here that's deterministic (vs seeding by time)
 	int numPlayer = 2;
@@ -228,7 +314,10 @@ void testBaron() {
 	baronTest2(G);
 	baronTest3(G);
 	baronTest4(G);
+	//baronTest5(G);
 	baronTest6(G);
+	baronTest7(G);
+	//baronTest8(G);
 }
 
 int main() {

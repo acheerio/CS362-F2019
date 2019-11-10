@@ -57,7 +57,7 @@ run-tests: unittest1 unittest2 unittest3 unittest4 unittest5
 all: playdom player 
 
 clean:
-	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
+	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe unittest1 unittest2 unittest3 unittest4 unittest5
 
 clean-tests:
 	rm -f *.o *.gcov *.gcda *.gcno unittest1 unittest2 unittest3 unittest4 unittest5
