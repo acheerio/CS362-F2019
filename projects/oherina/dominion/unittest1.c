@@ -96,10 +96,10 @@ void baronTest3(struct gameState state) {
 	state.playedCardCount = 0;
 	int playedCardCountExpected = 1;
 	state.handCount[state.whoseTurn] = 1;
-	int expectedHandCount = state.handCount[state.whoseTurn]; // played baron, gained estate
+	int expectedHandCount = state.handCount[state.whoseTurn] - 1;
 	state.hand[state.whoseTurn][0] = baron;
-	state.discardCount[state.whoseTurn] = 0;
-	int discardCountExpected = state.discardCount[state.whoseTurn];
+	state.discardCount[state.whoseTurn] = 1;
+	int discardCountExpected = state.discardCount[state.whoseTurn] + 1;
 	int card = baron;
 	int choice1 = 1; // choose to discard estate
 	int handPos = 0; // baron card in position 1
@@ -114,16 +114,16 @@ void baronTest3(struct gameState state) {
 	assert("Played cards incremented.", state.playedCardCount, playedCardCountExpected);
 	assert("Baron placed at top of played cards.", state.playedCards[state.playedCardCount], baron);
 	
-	printf("3) Estate card gained.\n");
+	printf("3) Estate card gained to discard.\n");
 	assert("Number of estates in supply decremented.", state.supplyCount[estate], expectedEstateCount);
-	assert("Estate card in hand.", hasCard(state.whoseTurn, estate, state), TRUE);
-	assert("Hand has correct number of cards. (also #2)", state.handCount[state.whoseTurn], expectedHandCount);
+	assert("Correct number of discards.", state.discardCount[state.whoseTurn], discardCountExpected);
+	assert("Estate at top of discard.", state.discard[state.whoseTurn][state.discardCount[state.whoseTurn]], estate);
 	
 	printf("4) No coins gained.\n");
 	assert("+0 Coins", state.coins, coinsExpected);
 	
-	printf("5) No cards discarded.\n");
-	assert("No discards.", state.discardCount[state.whoseTurn], discardCountExpected);
+	printf("5) Correct number of cards in hand.\n");
+	assert("No cards in hand.", state.handCount[state.whoseTurn], expectedHandCount);
 	printf("\n\n");
 }
 
