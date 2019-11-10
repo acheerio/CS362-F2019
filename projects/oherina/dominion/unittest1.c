@@ -42,7 +42,7 @@ void baronTest1(struct gameState state) {
 	
 	printf("4) Four coins gained.\n");
 	assert("+4 Coins", state.coins, coinsExpected);
-	printf{"\n\n");
+	printf("\n\n");
 }
 
 void baronTest2(struct gameState state) {
@@ -81,7 +81,7 @@ void baronTest2(struct gameState state) {
 	
 	printf("4) Four coins gained.\n");
 	assert("+4 Coins", state.coins, coinsExpected);
-	printf{"\n\n");
+	printf("\n\n");
 }
 
 void baronTest3(struct gameState state) {
@@ -121,7 +121,7 @@ void baronTest3(struct gameState state) {
 	
 	printf("4) No coins gained.\n");
 	assert("+0 Coins", state.coins, coinsExpected);
-	printf{"\n\n");
+	printf("\n\n");
 }
 
 void testBaron() {
