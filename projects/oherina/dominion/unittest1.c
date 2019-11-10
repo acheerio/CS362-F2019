@@ -115,9 +115,9 @@ void baronTest3(struct gameState state) {
 	assert("Baron placed at top of played cards.", state.playedCards[state.playedCardCount], baron);
 	
 	printf("3) Estate card gained to discard.\n");
-	assert("Number of estates in supply decremented.", state.supplyCount[estate], expectedEstateCount);
+	assert("Number of estates in supply decreased 1.", state.supplyCount[estate], expectedEstateCount);
 	assert("Correct number of discards.", state.discardCount[state.whoseTurn], discardCountExpected);
-	assert("Estate at top of discard.", state.discard[state.whoseTurn][state.discardCount[state.whoseTurn]], estate);
+	assert("Estate at top of discard.", state.discard[state.whoseTurn][state.discardCount[state.whoseTurn] - 1], estate);
 	
 	printf("4) No coins gained.\n");
 	assert("+0 Coins", state.coins, coinsExpected);
