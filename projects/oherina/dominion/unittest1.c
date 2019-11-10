@@ -37,11 +37,11 @@ void baronTest1(struct gameState state) {
 	assert("Function returns 0 (Success)", result, 0);
 	
 	printf("2) Baron card moved out of player's hand.\n");
-	assert("Baron removed from hand.", hasCard(state.whoseTurn, baron, G), FALSE);
+	assert("Baron removed from hand.", hasCard(state.whoseTurn, baron, state), FALSE);
 	assert("Baron placed at top of played cards.", state.playedCards[state.playedCardCount], baron);
 	
 	printf("3) Estate card discarded.\n");
-	assert("Estate card removed from hand.", hasCard(state.whoseTurn, estate, G), FALSE);
+	assert("Estate card removed from hand.", hasCard(state.whoseTurn, estate, state), FALSE);
 	assert("Estate card at top of discard pile.", state.discard[state.whoseTurn][state.discardCount[state.whoseTurn]], estate);
 	
 	printf("4) Four coins gained.\n");
