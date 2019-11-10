@@ -54,7 +54,7 @@ void mineTest2(struct gameState state) {
 	
 	printf("4) Treasure gained.\n");
 	assert("Supply count -1.", state.supplyCount[cardToGain], supplyCountExpected);
-	assert("Treasure in hand.", hasCard(state.whoseTurn, cardToGain, state), TRUE);]]
+	assert("Treasure in hand.", hasCard(state.whoseTurn, cardToGain, state), TRUE);
 	
 	printf("5) Correct number of cards in hand.\n");
 	assert("Hand count -1.", state.handCount[state.whoseTurn], handCountExpected);
@@ -70,30 +70,30 @@ void mineTest4(struct gameState state) {
 	printf("choice1 and choice2 are valid, current player = 1");
 	state.whoseTurn = 1;
 }
-void mineTest6(struct gameState state) {
+void mineTest5(struct gameState state) {
 	printf("choice1 is not a treasure card");
 	state.whoseTurn = 0;
 }
-void mineTest7(struct gameState state) {
+void mineTest6(struct gameState state) {
 	printf("choice1 is not valid index in player's hand");
 	state.whoseTurn = 0;
 }
-void mineTest8(struct gameState state) {
+void mineTest7(struct gameState state) {
 	printf("choice2 is not a treasure card");
 	state.whoseTurn = 0;
 }
 
-void mineTest9(struct gameState state) {
+void mineTest8(struct gameState state) {
 	printf("choice2 is not in the supply");
 	state.whoseTurn = 0;
 }
 
-void mineTest10(struct gameState state) {
+void mineTest9(struct gameState state) {
 	printf("choice2 costs too much");
 	state.whoseTurn = 0;
 }
 
-void testMinion() {
+void testMine() {
 	int seed = 1; // need some constant here that's deterministic (vs seeding by time)
 	int numPlayer = 2;
 	int k[10] = {adventurer, council_room, minion, gardens, mine, remodel, smithy, village, baron, great_hall};
@@ -107,6 +107,9 @@ void testMinion() {
 	mineTest4(G);
 	mineTest5(G);
 	mineTest6(G);
+	mineTest7(G);
+	mineTest8(G);
+	mineTest9(G);
 }
 
 int main() {
