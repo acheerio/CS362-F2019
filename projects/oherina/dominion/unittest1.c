@@ -121,6 +121,9 @@ void baronTest3(struct gameState state) {
 	
 	printf("4) No coins gained.\n");
 	assert("+0 Coins", state.coins, coinsExpected);
+	
+	printf("5) No cards discarded.\n");
+	assert("No discards.", state.discardCount[state.whoseTurn], discardCountExpected);
 	printf("\n\n");
 }
 
