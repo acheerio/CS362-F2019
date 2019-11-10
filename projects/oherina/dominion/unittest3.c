@@ -6,19 +6,19 @@
 #include <stdio.h>
 
 void mineTest1(struct gameState state) {
-	printf("choice1 and choice2 are valid, choice2 cost < choice1 cost\n");
+	printf("Mine - choice1 and choice2 are valid, choice2 cost < choice1 cost\n");
 	
 }
 
 void mineTest2(struct gameState state) {
-	printf("choice1 and choice2 are valid, choice2 cost = choice1 cost + 3 (silver -> gold)\n");
+	printf("Mine - choice1 and choice2 are valid, choice2 cost = choice1 cost + 3 (silver -> gold)\n");
 	
 	state.whoseTurn = 0;
 	
 	// current player's hand = mine silver
 	state.handCount[state.whoseTurn] = 2;
 	int handCountExpected = state.handCount[state.whoseTurn] - 1;
-	state.hand[state.whoseTurn][0] = minion;
+	state.hand[state.whoseTurn][0] = mine;
 	state.hand[state.whoseTurn][0] = silver;
 	int handPos = 0; // played card in position 0
 	int cardToTrash = silver;
@@ -64,14 +64,14 @@ void mineTest2(struct gameState state) {
 }
 
 void mineTest3(struct gameState state) {
-	printf("choice1 and choice2 are valid, choice2 cost = choice1 cost + 3 (copper -> silver)\n");
+	printf("Mine - choice1 and choice2 are valid, choice2 cost = choice1 cost + 3 (copper -> silver)\n");
 	
 	state.whoseTurn = 0;
 	
 	// current player's hand = mine copper
 	state.handCount[state.whoseTurn] = 2;
 	int handCountExpected = state.handCount[state.whoseTurn] - 1;
-	state.hand[state.whoseTurn][0] = minion;
+	state.hand[state.whoseTurn][0] = mine;
 	state.hand[state.whoseTurn][0] = copper;
 	int handPos = 0; // played card in position 0
 	int cardToTrash = copper;
@@ -117,33 +117,33 @@ void mineTest3(struct gameState state) {
 }
 
 void mineTest4(struct gameState state) {
-	printf("choice1 and choice2 are valid, choice2 is the last of its kind in supply\n");
+	printf("Mine - choice1 and choice2 are valid, choice2 is the last of its kind in supply\n");
 	state.whoseTurn = 0;
 }
 void mineTest5(struct gameState state) {
-	printf("choice1 and choice2 are valid, current player = 1\n");
+	printf("Mine - choice1 and choice2 are valid, current player = 1\n");
 	state.whoseTurn = 1;
 }
 void mineTest6(struct gameState state) {
-	printf("choice1 is not a treasure card\n");
+	printf("Mine - choice1 is not a treasure card\n");
 	state.whoseTurn = 0;
 }
 void mineTest7(struct gameState state) {
-	printf("choice1 is not valid index in player's hand\n");
+	printf("Mine - choice1 is not valid index in player's hand\n");
 	state.whoseTurn = 0;
 }
 void mineTest8(struct gameState state) {
-	printf("choice2 is not a treasure card\n");
+	printf("Mine - choice2 is not a treasure card\n");
 	state.whoseTurn = 0;
 }
 
 void mineTest9(struct gameState state) {
-	printf("choice2 is not in the supply\n");
+	printf("Mine - choice2 is not in the supply\n");
 	state.whoseTurn = 0;
 }
 
 void mineTest10(struct gameState state) {
-	printf("choice2 costs too much\n");
+	printf("Mine - choice2 costs too much\n");
 	state.whoseTurn = 0;
 }
 
