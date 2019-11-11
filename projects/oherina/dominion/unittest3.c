@@ -343,7 +343,7 @@ void mineTest8(struct gameState state) {
 	int discardCountExpected = state.discardCount[state.whoseTurn]; // trashed not discarded
 	
 	// do not gain treasure
-	int cardToGain = smithy;
+	int cardToGain = province;
 	state.supplyCount[cardToGain] = 1;
 	int supplyCountExpected = state.supplyCount[cardToGain];
 	
