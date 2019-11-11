@@ -68,11 +68,13 @@ void ambassadorTest2(struct gameState state) {
 	state.whoseTurn = 0;
 	
 	// current player's hand = ambassador village
-	state.handCount[state.whoseTurn] = 2;
+	state.handCount[state.whoseTurn] = 4;
 	int handCountExpected = state.handCount[state.whoseTurn] - 2;
-	int choice1Card = village;
+	int choice1Card = curse;
 	state.hand[state.whoseTurn][0] = ambassador;
-	state.hand[state.whoseTurn][1] = choice1Card;
+	state.hand[state.whoseTurn][1] = copper;
+	state.hand[state.whoseTurn][2] = copper;
+	state.hand[state.whoseTurn][3] = choice1Card;
 	// state.hand[state.whoseTurn][2] = choice1Card;
 	int handPos = 0; // played card in position 0
 	
@@ -92,7 +94,7 @@ void ambassadorTest2(struct gameState state) {
 	int supplyCountExpected = state.supplyCount[choice1Card];
 	
 	int card = ambassador;
-	int choice1 = 1; // index of card to discard to supply
+	int choice1 = 3; // index of card to discard to supply
 	int choice2 = 1; // number of cards to discard to supply
 	
 	int result = ambassadorEffect(card, choice1, choice2, &state, handPos);
