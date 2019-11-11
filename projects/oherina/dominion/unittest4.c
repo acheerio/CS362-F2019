@@ -356,13 +356,14 @@ void ambassadorTest7(struct gameState state) {
 	state.whoseTurn = 0;
 	
 	// current player's hand = ambassador copper
-	state.handCount[state.whoseTurn] = 4;
+	state.handCount[state.whoseTurn] = 5;
 	int handCountExpected = state.handCount[state.whoseTurn];
 	int choice1Card = estate;
 	state.hand[state.whoseTurn][0] = ambassador;
 	state.hand[state.whoseTurn][1] = choice1Card;
 	state.hand[state.whoseTurn][2] = choice1Card;
 	state.hand[state.whoseTurn][3] = choice1Card;
+	state.hand[state.whoseTurn][4] = choice1Card;
 	int handPos = 0; // played card in position 0
 	
 	// do not play ambassador
@@ -420,14 +421,12 @@ void testAmbassador() {
 	initializeGame(numPlayer, k, seed, &G); // initialize a new game
 	
 	// calling tests and passing by value since we want gameState unchanged
-	/*
 	ambassadorTest1(G);
 	ambassadorTest2(G);
 	ambassadorTest3(G);
 	ambassadorTest4(G);
 	ambassadorTest5(G);
 	ambassadorTest6(G);
-	*/
 	ambassadorTest7(G);
 	ambassadorTest8(G);
 }
