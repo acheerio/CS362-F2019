@@ -186,7 +186,7 @@ void ambassadorTest4(struct gameState state) {
 	
 	// current player's hand = ambassador estate estate
 	state.handCount[state.whoseTurn] = 3;
-	int handCountExpected = state.handCount[state.whoseTurn] - 2;
+	int handCountExpected = state.handCount[state.whoseTurn] - 1;
 	int choice1Card = estate;
 	state.hand[state.whoseTurn][0] = ambassador;
 	state.hand[state.whoseTurn][1] = choice1Card;
