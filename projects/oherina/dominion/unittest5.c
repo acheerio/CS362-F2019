@@ -8,7 +8,7 @@
 void tributeTest1(struct gameState state) {
 	printf("Tribute - next player has only 1 card total in deck (treasure)\n");
 	
-	state.whoseTurn = 0
+	state.whoseTurn = 0;
 	// current player's hand = tribute
 	state.handCount[state.whoseTurn] = 1;
 	int handCountExpected = state.handCount[state.whoseTurn] - 1;
@@ -16,7 +16,7 @@ void tributeTest1(struct gameState state) {
 	int handPos = 0; // played card in position 0
 	
 	// next player's discard empty, deck has 1 card
-	nextPlayer = state.whoseTurn + 1;
+	int nextPlayer = state.whoseTurn + 1;
 	state.discardCount[nextPlayer] = 0;
 	state.deckCount[nextPlayer] = 1;
 	int tribute1 = copper;
@@ -27,7 +27,7 @@ void tributeTest1(struct gameState state) {
 	int playedCardCountExpected = state.playedCardCount + 1;
 	
 	// next player discards card
-	npDiscardCountExpected = state.discardCount[nextPlayer] + 1;
+	int npDiscardCountExpected = state.discardCount[nextPlayer] + 1;
 	
 	// current player gains 2 coins
 	state.coins = 1;
@@ -35,7 +35,8 @@ void tributeTest1(struct gameState state) {
 	state.numActions = 1;
 	int numActionsExpected = state.numActions;
 	
-	int result = mineEffect(card, &state, handPos);
+	int card = ambassador;
+	int result = ambassadorEffect(card, &state, handPos);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
