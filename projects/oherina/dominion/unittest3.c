@@ -190,7 +190,6 @@ void mineTest5(struct gameState state) {
 	
 	// gain treasure
 	int cardToGain = gold;
-	state.supplyCount[cardToGain] = 1;
 	int supplyCountExpected = state.supplyCount[cardToGain] - 1;
 	
 	int card = mine;
@@ -242,7 +241,6 @@ void mineTest6(struct gameState state) {
 	
 	// do not gain treasure
 	int cardToGain = gold;
-	state.supplyCount[cardToGain] = 1;
 	int supplyCountExpected = state.supplyCount[cardToGain];
 	
 	int card = mine;
@@ -293,7 +291,6 @@ void mineTest7(struct gameState state) {
 	
 	// do not gain treasure
 	int cardToGain = gold;
-	state.supplyCount[cardToGain] = 1;
 	int supplyCountExpected = state.supplyCount[cardToGain];
 	
 	int card = mine;
@@ -344,7 +341,6 @@ void mineTest8(struct gameState state) {
 	
 	// do not gain treasure
 	int cardToGain = province;
-	state.supplyCount[cardToGain] = 1;
 	int supplyCountExpected = state.supplyCount[cardToGain];
 	
 	int card = mine;
@@ -377,6 +373,53 @@ void mineTest8(struct gameState state) {
 void mineTest9(struct gameState state) {
 	printf("Mine - choice2 is not in the supply\n");
 	state.whoseTurn = 0;
+	
+	// current player's hand = mine silver
+	state.handCount[state.whoseTurn] = 2;
+	int handCountExpected = state.handCount[state.whoseTurn] - 1;
+	state.hand[state.whoseTurn][0] = mine;
+	state.hand[state.whoseTurn][1] = silver;
+	int handPos = 0; // played card in position 0
+	int cardToTrash = silver;
+	
+	// play mine
+	state.playedCardCount = 0;
+	int playedCardCountExpected = state.playedCardCount + 1;
+	
+	// trash treasure
+	state.discardCount[state.whoseTurn] = 0;
+	int discardCountExpected = state.discardCount[state.whoseTurn]; // trashed not discarded
+	
+	// gain treasure
+	int cardToGain = gold;
+	state.supplyCount[cardToGain] = 0;
+	int supplyCountExpected = state.supplyCount[cardToGain];
+	
+	int card = mine;
+	int choice1 = 1; // index of card to trash
+	int choice2 = cardToGain; // value of card to gain
+	
+	int result = mineEffect(card, choice1, choice2, &state, handPos);
+	
+	printf("1) Function error.\n");
+	assert("Function returns < 0 (Error)", result < 0, TRUE);
+	
+	printf("2) Mine card not played.\n");
+	assert("Mine remains in hand.", hasCard(state.whoseTurn, mine, state), TRUE);
+	assert("Played cards unchanged.", state.playedCardCount, playedCardCountExpected);
+	
+	printf("3) Choice1 not trashed.\n");
+	assert("Number of cards in discard unchanged.", state.discardCount[state.whoseTurn], discardCountExpected);
+	assert("Card remains in hand.", hasCard(state.whoseTurn, cardToTrash, state), TRUE);
+	
+	printf("4) Choice2 not gained.\n");
+	assert("Supply count unchanged.", state.supplyCount[cardToGain], supplyCountExpected);
+	assert("Treasure in hand.", hasCard(state.whoseTurn, cardToGain, state), FALSE);
+	
+	printf("5) Correct number of cards in hand.\n");
+	assert("Hand count unchanged.", state.handCount[state.whoseTurn], handCountExpected);
+	
+	printf("\n\n");
 }
 
 void mineTest10(struct gameState state) {
