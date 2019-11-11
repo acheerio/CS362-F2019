@@ -428,7 +428,7 @@ void mineTest10(struct gameState state) {
 	
 	// current player's hand = mine copper
 	state.handCount[state.whoseTurn] = 2;
-	int handCountExpected = state.handCount[state.whoseTurn] - 1;
+	int handCountExpected = state.handCount[state.whoseTurn];
 	int cardToTrash = copper;
 	state.hand[state.whoseTurn][0] = mine;
 	state.hand[state.whoseTurn][1] = cardToTrash;
@@ -436,7 +436,7 @@ void mineTest10(struct gameState state) {
 	
 	// play mine
 	state.playedCardCount = 0;
-	int playedCardCountExpected = state.playedCardCount + 1;
+	int playedCardCountExpected = state.playedCardCount;
 	
 	// trash treasure
 	state.discardCount[state.whoseTurn] = 0;
