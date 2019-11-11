@@ -136,7 +136,9 @@ int ambassadorEffect(int card, int choice1, int choice2, struct gameState *state
 
         for (i = 0; i < state->handCount[currentPlayer]; i++)
         {
-            if (i != handPos && i == state->hand[currentPlayer][choice1] && i != choice1)
+			// modified bug to achieve fuller code coverage
+			// previous line: if (i != handPos && i == state->hand[currentPlayer][choice1] && i != choice1)
+            if (i != handPos && state->hand[currentPlayer][i] == state->hand[currentPlayer][choice1] && i != choice1)
             {
                 j++;
             }
