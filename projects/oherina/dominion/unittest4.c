@@ -48,13 +48,13 @@ void ambassadorTest1(struct gameState state) {
 	assert("Played cards +1.", state.playedCardCount, playedCardCountExpected);
 	assert("Card placed at top of played cards.", state.playedCards[state.playedCardCount - 1], ambassador);
 
-	printf("3) Choice1 discarded.\n");
+	printf("3) Choice1 discarded to supply.\n");
 	assert("Number of cards in discard unchanged.", state.discardCount[state.whoseTurn], discardCountExpected);
 	assert("Card instances in hand -1.", getCount(state.whoseTurn, choice1Card, state), choice1CountExpected);
 
 	printf("4) Choice1 gained by next player.\n");
 	assert("Number of cards in supply net unchanged.", state.supplyCount[choice1Card],supplyCountExpected);
-	assert("Card instances in hand +1.", getCount(state.whoseTurn, choice1Card, state), nextPlayerChoice1CountExpected);
+	assert("Card instances in hand +1.", getCount(state.whoseTurn + 1, choice1Card, state), nextPlayerChoice1CountExpected);
 	
 	printf("5) Correct number of cards in hands.\n");
 	assert("Current player hand count -2.", state.handCount[state.whoseTurn], handCountExpected);
