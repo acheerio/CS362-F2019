@@ -22,6 +22,17 @@ bool hasCard(int player, int card, struct gameState state) {
 	return FALSE;
 }
 
+int getCount(int player, int card, struct gameState state) {
+	int count = 0;
+	int i;
+	for (i = 0; i < state.handCount[player]; i++) {
+		if (state.hand[player][i] == card) {
+			count++;
+		}
+	}
+	return count;
+}
+
 void fillHand(int player, int card, int count, struct gameState *state) {
 	state->handCount[player] = count;
 	int i;
