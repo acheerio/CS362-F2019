@@ -326,10 +326,10 @@ void mineTest8(struct gameState state) {
 	printf("Mine - choice2 is not a treasure card\n");
 	state.whoseTurn = 0;
 	
-	// current player's hand = mine estate
+	// current player's hand = mine silver
 	state.handCount[state.whoseTurn] = 2;
 	int handCountExpected = state.handCount[state.whoseTurn];
-	int cardToTrash = estate;
+	int cardToTrash = silver;
 	state.hand[state.whoseTurn][0] = mine;
 	state.hand[state.whoseTurn][1] = cardToTrash;
 	int handPos = 0; // played card in position 0
