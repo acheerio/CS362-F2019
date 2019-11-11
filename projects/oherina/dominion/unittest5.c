@@ -35,8 +35,8 @@ void tributeTest1(struct gameState state) {
 	state.numActions = 1;
 	int numActionsExpected = state.numActions;
 	
-	int card = ambassador;
-	int result = ambassadorEffect(card, &state, handPos);
+	int card = tribute;
+	int result = tributeEffect(card, &state, handPos);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
