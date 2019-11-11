@@ -124,6 +124,59 @@ void ambassadorTest2(struct gameState state) {
 
 void ambassadorTest3(struct gameState state) {
 	printf("Ambassador - choose to discard 0, have 1 of valid choice1\n");
+	state.whoseTurn = 0;
+	
+	// current player's hand = ambassador estate estate
+	state.handCount[state.whoseTurn] = 3;
+	int handCountExpected = state.handCount[state.whoseTurn] - 1;
+	int choice1Card = estate;
+	state.hand[state.whoseTurn][0] = ambassador;
+	state.hand[state.whoseTurn][1] = copper;
+	state.hand[state.whoseTurn][2] = choice1Card;
+	int handPos = 0; // played card in position 0
+	
+	// play ambassador
+	state.playedCardCount = 0;
+	int playedCardCountExpected = state.playedCardCount + 1;
+	
+	// discard choice1 (0)
+	int choice1CountExpected = getCount(state.whoseTurn, choice1Card, state);
+	state.discardCount[state.whoseTurn] = 0;
+	int discardCountExpected = state.discardCount[state.whoseTurn]; // to supply not discard
+	
+	// other player gains choice1 (0 -> 1)
+	state.handCount[state.whoseTurn + 1] = 0;
+	int nextPlayerHandExpected = state.handCount[state.whoseTurn + 1] + 1;
+	int nextPlayerChoice1CountExpected = 1;
+	int supplyCountExpected = state.supplyCount[choice1Card] - 1;
+	
+	int card = ambassador;
+	int choice1 = 2; // index of card to discard to supply
+	int choice2 = 0; // number of cards to discard to supply
+	
+	int result = ambassadorEffect(card, choice1, choice2, &state, handPos);
+	
+	printf("1) Function successful.\n");
+	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
+
+	printf("2) Ambassador card played.\n");
+	assert("Ambassador removed from hand.", hasCard(state.whoseTurn, card, state), FALSE);
+	assert("Played cards +1.", state.playedCardCount, playedCardCountExpected);
+	assert("Card placed at top of played cards.", state.playedCards[state.playedCardCount - 1], ambassador);
+
+	printf("3) Choice1 not discarded to supply.\n");
+	assert("Number of cards in discard unchanged.", state.discardCount[state.whoseTurn], discardCountExpected);
+	assert("Card instances in hand unchanged.", getCount(state.whoseTurn, choice1Card, state), choice1CountExpected);
+
+	printf("4) Choice1 gained by next player.\n");
+	assert("Number of cards in supply -1.", state.supplyCount[choice1Card],supplyCountExpected);
+	assert("Card instances in hand +1.", getCount(state.whoseTurn + 1, choice1Card, state), nextPlayerChoice1CountExpected);
+	
+	printf("5) Correct number of cards in hands.\n");
+	assert("Current player hand count -1.", state.handCount[state.whoseTurn], handCountExpected);
+	assert("Next player hand count +1.", state.handCount[state.whoseTurn + 1], nextPlayerHandExpected);
+	
+	printf("\n\n");
 }
 
 void ambassadorTest4(struct gameState state) {
