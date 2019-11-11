@@ -314,7 +314,6 @@ void ambassadorTest6(struct gameState state) {
 	int playedCardCountExpected = state.playedCardCount;
 	
 	// do not discard choice1
-	int choice1CountExpected = getCount(state.whoseTurn, choice1Card, state);
 	state.discardCount[state.whoseTurn] = 0;
 	int discardCountExpected = state.discardCount[state.whoseTurn]; // to supply not discard
 	
