@@ -44,7 +44,7 @@ void ambassadorTest1(struct gameState state) {
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
 
 	printf("2) Ambassador card played.\n");
-	assert("Ambassador removed from hand.", hasCard(state.whoseTurn, mine, state), FALSE);
+	assert("Ambassador removed from hand.", hasCard(state.whoseTurn, card, state), FALSE);
 	assert("Played cards +1.", state.playedCardCount, playedCardCountExpected);
 	assert("Card placed at top of played cards.", state.playedCards[state.playedCardCount - 1], ambassador);
 
@@ -103,7 +103,7 @@ void ambassadorTest2(struct gameState state) {
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
 
 	printf("2) Ambassador card played.\n");
-	assert("Ambassador removed from hand.", hasCard(state.whoseTurn, mine, state), FALSE);
+	assert("Ambassador removed from hand.", hasCard(state.whoseTurn, card, state), FALSE);
 	assert("Played cards +1.", state.playedCardCount, playedCardCountExpected);
 	assert("Card placed at top of played cards.", state.playedCards[state.playedCardCount - 1], ambassador);
 
