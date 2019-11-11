@@ -38,7 +38,7 @@ void ambassadorTest1(struct gameState state) {
 	int choice1 = 1; // index of card to discard to supply
 	int choice2 = 1; // number of cards to discard to supply
 	
-	int result = mineEffect(card, choice1, choice2, &state, handPos);
+	int result = ambassadorEffect(card, choice1, choice2, &state, handPos);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
