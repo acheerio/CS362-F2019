@@ -491,6 +491,7 @@ void testMine() {
 	mineTest7(G);
 	mineTest8(G);
 	mineTest9(G);
+	mineTest10(G);
 }
 
 int main() {
