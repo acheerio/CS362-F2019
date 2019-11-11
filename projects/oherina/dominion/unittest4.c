@@ -420,12 +420,14 @@ void testAmbassador() {
 	initializeGame(numPlayer, k, seed, &G); // initialize a new game
 	
 	// calling tests and passing by value since we want gameState unchanged
+	/*
 	ambassadorTest1(G);
 	ambassadorTest2(G);
 	ambassadorTest3(G);
 	ambassadorTest4(G);
 	ambassadorTest5(G);
 	ambassadorTest6(G);
+	*/
 	ambassadorTest7(G);
 	ambassadorTest8(G);
 }
