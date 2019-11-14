@@ -78,7 +78,7 @@ void tributeTest2(struct gameState state) {
 	
 	// current player's deck = copper copper copper copper
 	state.deckCount[state.whoseTurn] = 4;
-	int deckCountExpected = state.deckCount[state.whoseTurn];
+	int deckCountExpected = state.deckCount[state.whoseTurn] - 2;
 	state.deck[state.whoseTurn][0] = copper;
 	state.deck[state.whoseTurn][1] = copper;
 	state.deck[state.whoseTurn][2] = copper;
@@ -127,6 +127,7 @@ void tributeTest2(struct gameState state) {
 	assert("Coins +0.", state.coins, coinsExpected);
 	assert("Actions unchanged.", state.numActions, numActionsExpected);
 	assert("Hand count as expected (2 cards drawn).", state.handCount[state.whoseTurn], handCountExpected);
+	assert("Current player draws two cards.", state.deckCount[state.whoseTurn], deckCountExpected);
 	
 	printf("\n\n");
 }
