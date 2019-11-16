@@ -21,9 +21,9 @@ void testBaron(int random_seed) {
 	}*/
 	// initialize game
 	struct gameState G;
-	initializeGame(numPlayer, k, seed, &G); // initialize a new game
+	initializeGame(numPlayers, kCards, random_seed, &G); // initialize a new game
 	printSupply(&G);
-	
+
 	// discard pile
 	// hand
 	// supply - # estates (since we are not testing isGameOver we will not vary others)
