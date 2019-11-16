@@ -8,7 +8,7 @@ const int NUM_SELECTED_KCARDS = 10;
 
 bool assert(char * assertion, int a, int b);
 int myrand(int range_start, int range_end_exclusive);
-int getCount(int player, int card, struct gameState state);
+//int getCount(int player, int card, struct gameState state);
 int getCount(int arr[], int size, int card);
 void selectKingdomCardsWith(int random_seed, int kCards[], int card);
 // generate random hand (count, include specific card)
