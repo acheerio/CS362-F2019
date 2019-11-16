@@ -27,6 +27,7 @@ void testBaron(int random_seed) {
     int cardNum, cardCost, cardCount;
     char name[MAX_STRING_LENGTH];
     printf("#   Card          Cost   Copies\n");
+    /*
     for(cardNum = 0; cardNum < NUM_TOTAL_K_CARDS; cardNum++) {
         cardCount = G.supplyCount[cardNum];
         if(cardCount == -1) continue;
@@ -36,6 +37,7 @@ void testBaron(int random_seed) {
         printf("\n");
     }
     printf("\n");	
+    */
 
 	// discard pile
 	// hand
