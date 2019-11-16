@@ -9,7 +9,7 @@
 
 void testBaron() {
 	// non-random random seed, for initial testing
-	randomSeed = 1;
+	int randomSeed = 1;
 	// generate random kingdom cards
 	int kCards[10];
 	selectKingdomCards(randomSeed, kCards);
