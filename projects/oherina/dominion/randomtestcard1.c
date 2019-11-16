@@ -69,7 +69,7 @@ void testBaron(int random_seed) {
 		int choice1 = myrand(0, 2);
 		int handPos = 0; // baron card in position 1
 		
-		int result = baronEffect(card, choice1, &state, handPos);
+		int result = baronEffect(card, choice1, &G, handPos);
 		/*
 		printf("1) Function successful.\n");
 		assert("Function returns >= 0 (Success)", result >= 0, 0);
