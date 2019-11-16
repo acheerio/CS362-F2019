@@ -4,6 +4,7 @@
 #include "cardEffect.h"
 #include "dominion.h"
 #include "dominion_helpers.h"
+#include "interface.h"
 #include "randomhelper.h"
 #include "rngs.h"
 
