@@ -47,7 +47,7 @@ int countSupply(struct gameState state) {
 	int i;
 	int count;
 	for (i = 0; i < NUM_TOTAL_K_CARDS; i++) {
-		count += game.supplyCount[i];
+		count += state.supplyCount[i];
 	}
 	return count;
 }
