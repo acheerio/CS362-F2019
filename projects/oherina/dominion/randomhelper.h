@@ -4,7 +4,7 @@
 #include "dominion.h"
 
 typedef enum bool {FALSE, TRUE} bool;
-const int NUM_SELECTED_KCARDS = 10;
+int NUM_SELECTED_KCARDS = 10;
 
 bool assert(char * assertion, int a, int b);
 int myrand(int range_start, int range_end_exclusive);
