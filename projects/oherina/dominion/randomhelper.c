@@ -46,8 +46,8 @@ int getCount(int arr[], int size, int card) {
 void selectKingdomCardsWith(int random_seed, int kCards[], int card) {
 	selectKingdomCards(random_seed, kCards);
 	// make sure baron card in kingdom cards
-	if (getCount(kCards, NUM_SELECTED_KCARDS, card) < 1) {
-		int index = myrand(0, NUM_SELECTED_KCARDS);
+	if (getCount(kCards, NUM_K_CARDS, card) < 1) {
+		int index = myrand(0, NUM_K_CARDS);
 		kCards[index] = card;
 	}
 }

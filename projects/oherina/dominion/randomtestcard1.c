@@ -12,7 +12,7 @@ void testBaron(int random_seed) {
 	// generate random number of players
 	int numPlayers = myrand(2, 5);
 	// generate random kingdom cards
-	int kCards[NUM_SELECTED_KCARDS];
+	int kCards[NUM_K_CARDS];
 	selectKingdomCardsWith(random_seed, kCards, baron);
 
 	/*
