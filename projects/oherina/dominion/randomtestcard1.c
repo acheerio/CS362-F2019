@@ -6,15 +6,15 @@
 #include "dominion_helpers.h"
 #include "interface.h"
 #include "randomhelper.h"
-#include "rngs.h"
 
 void testBaron(int random_seed) {
 	// generate random number of players
 	int numPlayers = myrand(2, 5);
 	// generate random kingdom cards
 	int kCards[NUM_K_CARDS];
+	printf("Before selectKingdomCardsWith\n");
 	selectKingdomCardsWith(random_seed, kCards, baron);
-
+	printf("After selectKingdomCardsWith\n");
 	/*
 	int i;
 	for (i = 0; i < 10; i++) {
@@ -23,11 +23,11 @@ void testBaron(int random_seed) {
 	// initialize game
 	struct gameState G;
 	initializeGame(numPlayers, kCards, random_seed, &G); // initialize a new game
-	// printSupply(&G);
+	printSupply(&G);
+	/*
     int cardNum, cardCost, cardCount;
     char name[MAX_STRING_LENGTH];
     printf("#   Card          Cost   Copies\n");
-    /*
     for(cardNum = 0; cardNum < NUM_TOTAL_K_CARDS; cardNum++) {
         cardCount = G.supplyCount[cardNum];
         if(cardCount == -1) continue;
