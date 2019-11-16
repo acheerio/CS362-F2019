@@ -8,6 +8,7 @@ Sam Heinith CS362
 #include <math.h>
 #include <assert.h>
 #include <string.h>
+#include "randomhelper.h"
 #include "rngs.h"
 #include "interface.h"
 #include "dominion.h"

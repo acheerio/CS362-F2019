@@ -31,8 +31,10 @@
 
 #define COMPARE(string1, string2) strncmp(string1, string2, 4)
 #define MAX_STRING_LENGTH 32
+/*
 #define TRUE 1
 #define FALSE 0
+*/
 
 #define SUCCESS 0
 #define FAILURE -1
