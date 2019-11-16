@@ -3,8 +3,8 @@
 
 #include "dominion.h"
 
-#define K_CARD_MIN = 7;  // adventurer
-#define K_CARD_MAX = 26; // treasure_map
+#define K_CARD_MIN 7  // adventurer
+#define K_CARD_MAX 26 // treasure_map
 typedef enum bool {FALSE, TRUE} bool;
 
 bool assert(char * assertion, int a, int b);
