@@ -43,7 +43,7 @@ int getCount(int arr[], int size, int card) {
 	return count;
 }
 
-void selectKingdomCardsWith(int random_seed, int kCards[], int card) {
+void selectKingdomCardsWith(int random_seed, int kCards[], int include) {
 	int i, used, card, numSelected = 0;
 
     while(numSelected < NUM_K_CARDS) {
@@ -61,9 +61,9 @@ void selectKingdomCardsWith(int random_seed, int kCards[], int card) {
         numSelected++;
     }
 
-	if (getCount(kCards, NUM_K_CARDS, card) < 1) {
+	if (getCount(kCards, NUM_K_CARDS, include) < 1) {
 		int index = myrand(0, NUM_K_CARDS);
-		kCards[index] = card;
+		kCards[index] = include;
 	}
 }
 
