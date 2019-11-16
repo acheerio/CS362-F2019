@@ -43,6 +43,15 @@ int getCount(int arr[], int size, int card) {
 	return count;
 }
 
+int countSupply(struct gameState state) {
+	int i;
+	int count;
+	for (i = 0; i < NUM_TOTAL_K_CARDS; i++) {
+		count += game.supplyCount[i];
+	}
+	return count;
+}
+
 void selectKingdomCardsWith(int random_seed, int kCards[], int include) {
 	int i, used, card, numSelected = 0;
 
@@ -64,6 +73,20 @@ void selectKingdomCardsWith(int random_seed, int kCards[], int include) {
 	if (getCount(kCards, NUM_K_CARDS, include) < 1) {
 		int index = myrand(0, NUM_K_CARDS);
 		kCards[index] = include;
+	}
+}
+
+void fillHand(int currPlayer, int handCount, struct gameState *state) {
+	state->handCount[currPlayer] = handCount;
+
+	int i;
+	int rand;
+	for (i = 0; i < handCount; i++) {
+		do {
+			rand = myrand(0, NUM_TOTAL_K_CARDS);
+		} while (state->supplyCount[rand] == 0);
+		state->supplyCount[rand]--;
+		state->hand[currPlayer][i] = rand;
 	}
 }
 

@@ -1,6 +1,7 @@
+#include <limits.h>
+#include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <math.h>
 #include "cardEffect.h"
 #include "dominion.h"
 #include "dominion_helpers.h"
@@ -8,50 +9,41 @@
 #include "randomhelper.h"
 
 void testBaron(int random_seed) {
-	// generate random number of players
+	// generate random number of players, currentPlayer
 	int numPlayers = myrand(2, 5);
+	int currPlayer = myrand(0, numPlayers);
 	// generate random kingdom cards
 	int kCards[NUM_K_CARDS];
 	printf("Before selectKingdomCardsWith\n");
 	selectKingdomCardsWith(random_seed, kCards, baron);
 	printf("After selectKingdomCardsWith\n");
-	/*
-	int i;
-	for (i = 0; i < 10; i++) {
-		printf("%d\n", kCards[i]);
-	}*/
 	// initialize game
 	struct gameState G;
 	initializeGame(numPlayers, kCards, random_seed, &G); // initialize a new game
-	printSupply(&G);
+	if (DEBUG) {
+		printSupply(&G);
+	}
+	// randomize number of estates in supply, hand
+	int totalEstates = numPlayers == 2 ? 8 : 12;
+	int estatesInHand = myrand(0, totalEstates + 1);
+	G.supplyCount[estate] = totalEstates - estatesInHand;
+	// randomize hand
+	int numSupply = countSupply(G);
+	int handCount = myrand(estatesInHand, min(MAX_HAND, numSupply));
+	fillHand(currPlayer, handCount, &G);
+	// randomize coins
+	G.coins = myrand(0, INT_MAX - 2);
+	// discard count 0
+	// deck is non-empty, initialized with 3 estates and 7 copper
+
+	// check values
+	printHand(currPlayer, &G);
+	printDeck(currPlayer, &G);
+	printDiscard(currPlayer, &G);
 	/*
-    int cardNum, cardCost, cardCount;
-    char name[MAX_STRING_LENGTH];
-    printf("#   Card          Cost   Copies\n");
-    for(cardNum = 0; cardNum < NUM_TOTAL_K_CARDS; cardNum++) {
-        cardCount = G.supplyCount[cardNum];
-        if(cardCount == -1) continue;
-        cardNumToName(cardNum, name);
-        cardCost = getCardCost(cardNum);
-        printf("%-2d  %-13s %-5d  %-5d", cardNum, name, cardCost, cardCount);
-        printf("\n");
-    }
-    printf("\n");	
-    */
-
-	// discard pile
-	// hand
-	// supply - # estates (since we are not testing isGameOver we will not vary others)
-
-	/*
-	int numPlayer = 2;
-	int k[10] = {adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall};
-	struct gameState G;
-	initializeGame(numPlayer, k, seed, &G); // initialize a new game
-
-	int i;
-	const NUMRUNS = 100;
-	for (i = 0; i < NUMRUNS; i++) {
+	int n;
+	int NUMRUNS = 100;
+	for (n = 0; n < NUMRUNS; n++) {
 		state.whoseTurn = 0;
 		state.coins = 2;
 		int coinsExpected = state.coins + 4;
