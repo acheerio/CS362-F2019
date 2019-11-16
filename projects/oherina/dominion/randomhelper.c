@@ -85,12 +85,10 @@ void selectKingdomCardsWith(int random_seed, int kCards[], int include) {
 	}
 }
 
-void fillHand(int currPlayer, int handCount, struct gameState *state) {
-	state->handCount[currPlayer] = handCount;
-
+void fillHand(int currPlayer, int startIndex, int handCount, struct gameState *state) {
 	int i;
 	int rand;
-	for (i = 0; i < handCount; i++) {
+	for (i = startIndex; i < handCount; i++) {
 		do {
 			rand = myrand(0, NUM_TOTAL_K_CARDS);
 		} while (state->supplyCount[rand] == 0);

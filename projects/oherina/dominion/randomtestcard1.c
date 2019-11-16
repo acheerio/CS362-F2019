@@ -23,14 +23,20 @@ void testBaron(int random_seed) {
 	if (DEBUG) {
 		printSupply(&G);
 	}
-	// randomize number of estates in supply, hand
-	int totalEstates = numPlayers == 2 ? 8 : 12;
-	int estatesInHand = myrand(0, totalEstates + 1);
-	G.supplyCount[estate] = totalEstates - estatesInHand;
-	// randomize hand
-	int numSupply = countSupply(G);
-	int handCount = myrand(estatesInHand, min(MAX_HAND, numSupply));
-	fillHand(currPlayer, handCount, &G);
+	// random hand, from 1 (baron) to 10 cards
+	int handCount = myrand(1, 11);
+	G.handCount[currPlayer] = handCount;
+	G.hand[currPlayer][0] = baron;
+	// random estates in hand, either 0 or 1
+	int estatesInHand = myrand(0, 2);
+	if (estatesInHand > 0) {
+		G.hand[currPlayer][1] = estate;
+	}
+	// fills hand from supply
+	int startIndex = 1 + estatesInHand;
+	fillHand(currPlayer, startIndex, handCount, &G);
+	// random estates in supply, either 0 or 1
+	G.supplyCount[estate] = myrand(0, 2);
 	// randomize coins
 	G.coins = myrand(0, INT_MAX - 2);
 	// discard count 0

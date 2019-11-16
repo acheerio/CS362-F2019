@@ -14,7 +14,7 @@ int myrand(int range_start, int range_end_exclusive);
 int getCount(int arr[], int size, int card);
 int countSupply(struct gameState state);
 void selectKingdomCardsWith(int random_seed, int kCards[], int include);
-void fillHand(int currPlayer, int handCount, struct gameState *state);
+void fillHand(int currPlayer, int startIndex, int handCount, struct gameState *state);
 // generate random hand (count, include specific card)
 // generate random deck (count, player, state)
 // generate random discard (count, player, state)
