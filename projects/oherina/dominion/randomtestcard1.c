@@ -9,47 +9,11 @@
 #include "randomhelper.h"
 
 void testBaron(int random_seed) {
-	// generate random number of players, currentPlayer
-	int numPlayers = myrand(2, 5);
-	int currPlayer = myrand(0, numPlayers);
-	// generate random kingdom cards
-	int kCards[NUM_K_CARDS];
-	printf("Before selectKingdomCardsWith\n");
-	selectKingdomCardsWith(random_seed, kCards, baron);
-	printf("After selectKingdomCardsWith\n");
-	// initialize game
-	struct gameState G;
-	initializeGame(numPlayers, kCards, random_seed, &G); // initialize a new game
-	if (DEBUG) {
-		printSupply(&G);
-	}
-	// random hand, from 1 (baron) to 10 cards
-	int handCount = myrand(1, 11);
-	G.handCount[currPlayer] = handCount;
-	G.hand[currPlayer][0] = baron;
-	// random estates in hand, either 0 or 1
-	int estatesInHand = myrand(0, 2);
-	if (estatesInHand > 0) {
-		G.hand[currPlayer][1] = estate;
-	}
-	// fills hand from supply
-	int startIndex = 1 + estatesInHand;
-	fillHand(currPlayer, startIndex, handCount, &G);
-	// random estates in supply, either 0 or 1
-	G.supplyCount[estate] = myrand(0, 2);
-	// randomize coins
-	G.coins = myrand(0, INT_MAX - 2);
-	// discard count 0
-	// deck is non-empty, initialized with 3 estates and 7 copper
-
-	// check values
-	printHand(currPlayer, &G);
-	printDeck(currPlayer, &G);
-	printDiscard(currPlayer, &G);
-	/*
 	int n;
-	int NUMRUNS = 100;
+	int NUMRUNS = 10;
 	for (n = 0; n < NUMRUNS; n++) {
+
+		/*
 		state.whoseTurn = 0;
 		state.coins = 2;
 		int coinsExpected = state.coins + 4;
@@ -61,13 +25,52 @@ void testBaron(int random_seed) {
 		state.hand[state.whoseTurn][1] = baron;
 		state.discardCount[state.whoseTurn] = 0;
 		int discardCountExpected = state.discardCount[state.whoseTurn] + 1; 
+		*/
 		
+		// generate random number of players, currentPlayer
+		int numPlayers = myrand(2, 5);
+		int currPlayer = myrand(0, numPlayers);
+		// generate random kingdom cards
+		int kCards[NUM_K_CARDS];
+		printf("Before selectKingdomCardsWith\n");
+		selectKingdomCardsWith(random_seed, kCards, baron);
+		printf("After selectKingdomCardsWith\n");
+		// initialize game
+		struct gameState G;
+		initializeGame(numPlayers, kCards, random_seed, &G); // initialize a new game
+		if (DEBUG) {
+			printSupply(&G);
+		}
+		// random hand, from 1 (baron) to 10 cards
+		int handCount = myrand(1, 11);
+		G.handCount[currPlayer] = handCount;
+		G.hand[currPlayer][0] = baron;
+		// random estates in hand, either 0 or 1
+		int estatesInHand = handCount == 1 ? 0 : myrand(0, 2);
+		if (estatesInHand > 0) {
+			G.hand[currPlayer][1] = estate;
+		}
+		// fills hand from supply
+		int startIndex = 1 + estatesInHand;
+		fillHand(currPlayer, startIndex, handCount, &G);
+		// random estates in supply, either 0 or 1
+		G.supplyCount[estate] = myrand(0, 2);
+		// randomize coins
+		G.coins = myrand(0, INT_MAX - 2);
+		// discard count 0
+		// deck is non-empty, initialized with 3 estates and 7 copper
+
+		// check values
+		// printHand(currPlayer, &G);
+		// printDeck(currPlayer, &G);
+		// printDiscard(currPlayer, &G);
+
 		int card = baron;
-		int choice1 = 1; // choose to discard estate
-		int handPos = 1; // baron card in position 1
+		int choice1 = myrand(0, 2);
+		int handPos = 0; // baron card in position 1
 		
 		int result = baronEffect(card, choice1, &state, handPos);
-		
+		/*
 		printf("1) Function successful.\n");
 		assert("Function returns >= 0 (Success)", result >= 0, 0);
 		
@@ -87,8 +90,8 @@ void testBaron(int random_seed) {
 		printf("5) Correct number of cards in hand.\n");
 		assert("No cards in hand.", state.handCount[state.whoseTurn], expectedHandCount);
 		printf("\n\n");
+		*/
 	}
-	*/
 }
 
 int main() {
