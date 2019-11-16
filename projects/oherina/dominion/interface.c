@@ -6,7 +6,7 @@ Sam Heinith CS362
 
 #include <stdio.h>
 #include <math.h>
-#include <assert.h>
+// #include <assert.h>
 #include <string.h>
 #include "randomhelper.h"
 #include "rngs.h"
