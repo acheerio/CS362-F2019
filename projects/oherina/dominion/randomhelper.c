@@ -17,8 +17,10 @@ bool assert(char * assertion, int a, int b) {
 int myrand(int range_start, int range_end_exclusive) {
 	int range = range_end_exclusive - range_start;
 	int num = (rand() % range) + range_start;
+	return num;
 }
 
+/*
 int getCount(int player, int card, struct gameState state) {
 	int count = 0;
 	int i;
@@ -28,7 +30,7 @@ int getCount(int player, int card, struct gameState state) {
 		}
 	}
 	return count;
-}
+}*/
 
 int getCount(int arr[], size_t size, int card) {
 	int count = 0;
