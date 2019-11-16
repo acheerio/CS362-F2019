@@ -23,7 +23,19 @@ void testBaron(int random_seed) {
 	// initialize game
 	struct gameState G;
 	initializeGame(numPlayers, kCards, random_seed, &G); // initialize a new game
-	printSupply(&G);
+	// printSupply(&G);
+    int cardNum, cardCost, cardCount;
+    char name[MAX_STRING_LENGTH];
+    printf("#   Card          Cost   Copies\n");
+    for(cardNum = 0; cardNum < NUM_TOTAL_K_CARDS; cardNum++) {
+        cardCount = G.supplyCount[cardNum];
+        if(cardCount == -1) continue;
+        cardNumToName(cardNum, name);
+        cardCost = getCardCost(cardNum);
+        printf("%-2d  %-13s %-5d  %-5d", cardNum, name, cardCost, cardCount);
+        printf("\n");
+    }
+    printf("\n");	
 
 	// discard pile
 	// hand
