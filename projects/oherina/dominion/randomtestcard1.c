@@ -1,25 +1,29 @@
-#include "dominion.h"
-#include "dominion_helpers.h"
-#include "cardEffect.h"
-#include "randomhelper.h"
-#include "rngs.h"
-#include "interface.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
+#include "cardEffect.h"
+#include "dominion.h"
+#include "dominion_helpers.h"
+#include "randomhelper.h"
+#include "rngs.h"
 
-void testBaron() {
-	// non-random random seed, for initial testing
-	int randomSeed = 1;
+void testBaron(int random_seed) {
+	// generate random number of players
+	int numPlayers = myrand(2, 5);
 	// generate random kingdom cards
-	int kCards[10];
-	selectKingdomCards(randomSeed, kCards);
+	int kCards[NUM_SELECTED_KCARDS];
+	selectKingdomCardsWith(random_seed, kCards, baron);
+
+	/*
 	int i;
 	for (i = 0; i < 10; i++) {
 		printf("%d\n", kCards[i]);
-	}
+	}*/
 	// initialize game
-	// numPlayers
-	// kingdom cards (9 random, 1 is the card to play)
+	struct gameState G;
+	initializeGame(numPlayer, k, seed, &G); // initialize a new game
+	printSupply(&G);
+	
 	// discard pile
 	// hand
 	// supply - # estates (since we are not testing isGameOver we will not vary others)
@@ -75,6 +79,8 @@ void testBaron() {
 }
 
 int main() {
-	testBaron();
+	int random_seed = 0;
+	srand(random_seed);
+	testBaron(random_seed);
 	return 0;
 }
