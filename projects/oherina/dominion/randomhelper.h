@@ -8,6 +8,7 @@
 typedef enum bool {FALSE, TRUE} bool;
 
 bool assert(char * assertion, int a, int b);
+int min(int a, int b);
 int myrand(int range_start, int range_end_exclusive);
 //int getCount(int player, int card, struct gameState state);
 int getCount(int arr[], int size, int card);
