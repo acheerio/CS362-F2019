@@ -32,7 +32,7 @@ int getCount(int player, int card, struct gameState state) {
 	return count;
 }*/
 
-int getCount(int arr[], size_t size, int card) {
+int getCount(int arr[], int size, int card) {
 	int count = 0;
 	int i;
 	for (i = 0; i < size; i++) {
