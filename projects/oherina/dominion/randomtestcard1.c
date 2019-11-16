@@ -94,7 +94,7 @@ void testBaron(int random_seed) {
 }
 
 int main() {
-	int random_seed = 0;
+	int random_seed = 1;
 	srand(random_seed);
 	testBaron(random_seed);
 	return 0;
