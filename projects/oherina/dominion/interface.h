@@ -93,6 +93,7 @@ int countHandCoins(int player, struct gameState *game);
 void executeBotTurn(int player, int *turnNum, struct gameState *game);
 
 void phaseNumToName(int phase, char *name);
+
 void cardNumToName(int card, char *name);
 
 int getCardCost(int card);

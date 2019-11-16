@@ -16,17 +16,17 @@ playdom: dominion.o playdom.c
 interface.o: interface.h interface.c
 	gcc -c interface.c -g  $(CFLAGS)
 
-assert.o: assert.c assert.h
-	gcc -c assert.c -g $(CFLAGS)
+randomhelper.o: randomhelper.c randomhelper.h
+	gcc -c randomhelper.c -g $(CFLAGS)
 
-randomtestcard1: randomtestcard1.c dominion.o cardEffect.o assert.o rngs.o
-	gcc -o randomtestcard1 -g randomtestcard1.c dominion.o cardEffect.o assert.o rngs.o $(CFLAGS)
+randomtestcard1: randomtestcard1.c dominion.o cardEffect.o randomhelper.o rngs.o
+	gcc -o randomtestcard1 -g randomtestcard1.c dominion.o cardEffect.o randomhelper.o rngs.o $(CFLAGS)
 
-randomtestcard2: randomtestcard2.c dominion.o cardEffect.o assert.o rngs.o
-	gcc -o randomtestcard2 -g randomtestcard2.c dominion.o cardEffect.o assert.o rngs.o $(CFLAGS)
+randomtestcard2: randomtestcard2.c dominion.o cardEffect.o randomhelper.o rngs.o
+	gcc -o randomtestcard2 -g randomtestcard2.c dominion.o cardEffect.o randomhelper.o rngs.o $(CFLAGS)
 
-randomtestcard3: randomtestcard3.c dominion.o cardEffect.o assert.o rngs.o
-	gcc -o randomtestcard3 -g randomtestcard3.c dominion.o cardEffect.o assert.o rngs.o $(CFLAGS)
+randomtestcard3: randomtestcard3.c dominion.o cardEffect.o randomhelper.o rngs.o
+	gcc -o randomtestcard3 -g randomtestcard3.c dominion.o cardEffect.o randomhelper.o rngs.o $(CFLAGS)
 
 run-tests: randomtestcard1 randomtestcard2 randomtestcard3
 	./randomtestcard1 &> randomtestresults.out
