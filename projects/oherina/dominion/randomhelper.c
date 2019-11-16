@@ -44,12 +44,15 @@ int getCount(int arr[], int size, int card) {
 }
 
 void selectKingdomCardsWith(int random_seed, int kCards[], int card) {
+	printf("Before selectKingdomCards\n");
 	selectKingdomCards(random_seed, kCards);
+	printf("After selectKingdomCards\n");
 	// make sure baron card in kingdom cards
 	if (getCount(kCards, NUM_K_CARDS, card) < 1) {
 		int index = myrand(0, NUM_K_CARDS);
 		kCards[index] = card;
 	}
+	printf("After baron replace\n");
 }
 
 /*
