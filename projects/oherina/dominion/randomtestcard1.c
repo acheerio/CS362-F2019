@@ -10,37 +10,24 @@
 
 void testBaron(int random_seed) {
 	int n;
-	int NUMRUNS = 10;
+	int NUMRUNS = 25;
 	for (n = 0; n < NUMRUNS; n++) {
-
 		/*
-		state.whoseTurn = 0;
-		state.coins = 2;
-		int coinsExpected = state.coins + 4;
-		state.playedCardCount = 0;
-		int playedCardCountExpected = 1;
-		state.handCount[state.whoseTurn] = 2;
-		int expectedHandCount = state.handCount[state.whoseTurn] - 2;
-		state.hand[state.whoseTurn][0] = estate;
-		state.hand[state.whoseTurn][1] = baron;
-		state.discardCount[state.whoseTurn] = 0;
-		int discardCountExpected = state.discardCount[state.whoseTurn] + 1; 
-		*/
-		
+		 * GENERATE RANDOM GAME
+		 */
 		// generate random number of players, currentPlayer
 		int numPlayers = myrand(2, 5);
 		int currPlayer = myrand(0, numPlayers);
 		// generate random kingdom cards
 		int kCards[NUM_K_CARDS];
-		printf("Before selectKingdomCardsWith\n");
 		selectKingdomCardsWith(random_seed, kCards, baron);
-		printf("After selectKingdomCardsWith\n");
 		// initialize game
 		struct gameState G;
 		initializeGame(numPlayers, kCards, random_seed, &G); // initialize a new game
 		if (DEBUG) {
 			printSupply(&G);
 		}
+		G.whoseTurn = currPlayer;
 		// random hand, from 1 (baron) to 10 cards
 		int handCount = myrand(1, 11);
 		G.handCount[currPlayer] = handCount;
@@ -56,41 +43,93 @@ void testBaron(int random_seed) {
 		// random estates in supply, either 0 or 1
 		G.supplyCount[estate] = myrand(0, 2);
 		// randomize coins
-		G.coins = myrand(0, INT_MAX - 2);
-		// discard count 0
-		// deck is non-empty, initialized with 3 estates and 7 copper
-
+		G.coins = myrand(0, INT_MAX - 4);
+		
 		// check values
-		// printHand(currPlayer, &G);
-		// printDeck(currPlayer, &G);
-		// printDiscard(currPlayer, &G);
+		if (DEBUG) {
+			printHand(currPlayer, &G);
+			printDeck(currPlayer, &G); // deck is non-empty, initialized with 3 estates and 7 copper
+			printDiscard(currPlayer, &G); // discard count 0
+		}
 
 		int card = baron;
-		int choice1 = myrand(0, 2);
+		int choice1 = myrand(0, 2); // > 0, chose to discard estate
 		int handPos = 0; // baron card in position 1
+
+		/*
+		 * CALCULATE EXPECTED RESULTS
+		 */
+		// number of baron cards - may have added more random
+		int expectedBaronCount = getCount(G.hand[currPlayer], G.handCount[currPlayer], baron) - 1;
+		// number of estate cards - may have added more random
+		int currentEstateCountHand = getCount(G.hand[currPlayer], G.handCount[currPlayer], estate);
+		int expectedEstateCountHand;
+		int expectedEstateCountSupply;
+		int expectedHandCount;
+		int expectedPlayedCardCount = playedCardCount + 1;	// played baron
+		int expectedDeckCount = deckCount[currPlayer];
+		int expectedCoinCount;
+		int expectedDiscardCount;	
+		int discarded = FALSE;
+		int gained = FALSE;
+
+		// option 1 successfully discarded estate
+		if (choice1 == 1 && estatesInHand > 0) {
+			discarded = TRUE;
+			expectedEstateCountHand = currentEstateCountHand - 1;
+			expectedEstateCountSupply = G.supplyCount[estate];	// unchanged
+			expectedHandCount = G.handCount[currPlayer] - 2; // played baron, discarded estate
+			expectedCoinCount = G.coins + 4;	
+			// discard has additional estate (from hand)
+			expectedDiscardCount = discardCount[currPlayer] + 1;
+		}
+		// option 2 did not discard, must gain if possible
+		else if (G.supplyCount[estate] > 0) {
+			gained = TRUE;
+			expectedEstateCountHand = currentEstateCountHand + 1;
+			expectedEstateCountSupply = G.supplyCount[estate] - 1;	// unchanged
+			expectedHandCount = G.handCount[currPlayer] - 1; // played baron
+			expectedCoinCount = G.coins;
+			// discard has additional estate (gained from supply)
+			expectedDiscardCount = discardCount[currPlayer] + 1;
+		} 
+		// option 3 no change
+		else {
+			expectedEstateCountHand = currentEstateCountHand;
+			expectedEstateCountSupply = G.supplyCount[estate];
+			expectedHandCount = G.handCount[currPlayer];
+			expectedCoinCount = G.coins;
+			// discard unchanged
+			expectedDiscardCount = discardCount[currPlayer];
+		}
 		
 		int result = baronEffect(card, choice1, &G, handPos);
-		/*
+		
+		printf("BARON - TRIAL %d\n", n);
 		printf("1) Function successful.\n");
 		assert("Function returns >= 0 (Success)", result >= 0, 0);
 		
-		printf("2) Baron card moved out of player's hand.\n");
-		assert("Baron removed from hand.", hasCard(state.whoseTurn, baron, state), FALSE);
-		assert("Played cards incremented.", state.playedCardCount, playedCardCountExpected);
-		assert("Baron placed at top of played cards.", state.playedCards[state.playedCardCount - 1], baron);
+		printf("2) Baron card played.\n");
+		assert("Baron removed from hand.", getCount(G.hand[currPlayer], G.handCount[currPlayer], baron), expectedBaronCount);
+		assert("Played cards incremented.", G.playedCardCount, expectedPlayedCardCount);
+		assert("Baron placed at top of played cards.", G.playedCards[G.playedCardCount - 1], baron);
 		
-		printf("3) Estate card discarded.\n");
-		assert("Estate card removed from hand.", hasCard(state.whoseTurn, estate, state), FALSE);
-		assert("Number of cards in discard incremented.", state.discardCount[state.whoseTurn], discardCountExpected);
-		assert("Estate card at top of discard pile.", state.discard[state.whoseTurn][state.discardCount[state.whoseTurn]], estate);
-		
-		printf("4) Four coins gained.\n");
-		assert("+4 Coins", state.coins, coinsExpected);
+		printf("3) Correct estates in hand, deck, supply, discard.\n");
+		assert("Estate card, if any, removed from hand.", getCount(G.hand[currPlayer], G.handCount[currPlayer], estate), expectedEstateCountHand);
+		assert("Deck unchanged.", G.deckCount[currPlayer], expectedDeckCount)
+		assert("Number of estates in supply as expected.", G.supplyCount[estate], expectedEstateCountSupply)
+		assert("Number of cards in discard as expected.", G.discardCount[G.whoseTurn], discardCountExpected);
+		if (gained || discarded) {
+			assert("Estate card at top of discard pile.", G.discard[G.whoseTurn][G.discardCount[G.whoseTurn] - 1], estate);
+		}
+
+		printf("4) Correct number of coins.\n");
+		char *coinStatement = discarded ? "Gained 4 coins" : "Coins unchanged";
+		assert(coinStatement, G.coins, expectedCoinCount);
 		
 		printf("5) Correct number of cards in hand.\n");
-		assert("No cards in hand.", state.handCount[state.whoseTurn], expectedHandCount);
+		assert("Hand count correct.", G.handCount[G.whoseTurn], expectedHandCount);
 		printf("\n\n");
-		*/
 	}
 }
 
