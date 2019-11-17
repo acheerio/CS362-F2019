@@ -81,7 +81,7 @@ void testBaron(int random_seed) {
 			expectedHandCount = G.handCount[currPlayer] - 2; // played baron, discarded estate
 			expectedCoinCount = G.coins + 4;	
 			// discard has additional estate (from hand)
-			expectedDiscardCount = state.discardCount[currPlayer] + 1;
+			expectedDiscardCount = G.discardCount[currPlayer] + 1;
 		}
 		// option 2 did not discard, must gain if possible
 		else if (G.supplyCount[estate] > 0) {
@@ -91,7 +91,7 @@ void testBaron(int random_seed) {
 			expectedHandCount = G.handCount[currPlayer] - 1; // played baron
 			expectedCoinCount = G.coins;
 			// discard has additional estate (gained from supply)
-			expectedDiscardCount = discardCount[currPlayer] + 1;
+			expectedDiscardCount = G.discardCount[currPlayer] + 1;
 		} 
 		// option 3 no change
 		else {
