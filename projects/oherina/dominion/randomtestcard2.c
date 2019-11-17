@@ -133,6 +133,7 @@ void testMinion(int random_seed) {
 					expectedDeckCounts[j] = G.deckCount[j];
 					expectedDiscardCounts[j] = G.discardCount[j];
 				}
+			}
 		}
 
 		int result = minionEffect(card, choice1, choice2, &G, handPos);
