@@ -9,7 +9,7 @@
 #include "randomhelper.h"
 
 void testMinion(int random_seed) {
-	int n;
+	int n, i, j;
 	int NUMRUNS = 25;
 	for (n = 0; n < NUMRUNS; n++) {
 		/*
@@ -39,7 +39,6 @@ void testMinion(int random_seed) {
 		int startIndex = 1;
 		fillHand(currPlayer, startIndex, handCount, &G);
 		// fills other hands from supply
-		int i;
 		for (i = 0; i < numPlayers; i++) {
 			if (i != currPlayer) {
 				int otherHandCount = myrand(0, 8);
@@ -90,7 +89,6 @@ void testMinion(int random_seed) {
 			expectedCoinCount = G.coins;
 			expectedPlayedCardCount = G.playedCardCount;
 			expectedActionCount = G.numActions;
-			int j;
 			for (j = 0; j < numPlayers; j++) {
 				// hands
 				expectedHandCounts[j] = G.handCount[j];
@@ -106,7 +104,6 @@ void testMinion(int random_seed) {
 			expectedCoinCount = G.coins + 2;
 			expectedPlayedCardCount = G.playedCardCount + 1;
 			expectedActionCount = G.numActions + 2;
-			int j;
 			for (j = 0; j < numPlayers; j++) {
 				// hands
 				expectedHandCounts[j] = G.handCount[j];
@@ -122,7 +119,6 @@ void testMinion(int random_seed) {
 			expectedCoinCount = G.coins;
 			expectedPlayedCardCount = G.playedCardCount + 1;
 			expectedActionCount = G.numActions + 2;
-			int j;
 			for (j = 0; j < numPlayers; j++) {
 				bool curr = (j == G.whoseTurn);
 				if (curr || expectedHandCounts[j] > 4) {
@@ -154,8 +150,7 @@ void testMinion(int random_seed) {
 		else {
 			assert("Minion in hand.", G.hand[currPlayer][0], card);
 		}
-		int minionCount = 
-			getCount(G.hand[currPlayer], G.handCount[currPlayer], minion) + 
+		int minionCount = getCount(G.hand[currPlayer], G.handCount[currPlayer], minion) + 
 			getCount(G.deck[currPlayer], G.deckCount[currPlayer], minion) +
 			getCount(G.discard[currPlayer], G.discardCount[currPlayer], minion);
 		assert("Minion count correct (-1 from hand + deck + discard if played).", minionCount, expectedMinionCount);
@@ -167,7 +162,6 @@ void testMinion(int random_seed) {
 		assert("Coin count correct", G.coins, expectedCoinCount);
 
 		printf("5) Hands discarded and redrawn correctly (or unchanged) per success and choice.\n");
-		int j;
 		for (j = 0; j < numPlayers; j++) {
 			printf("Player %d:\n", j);
 			assert("Hand count correct.", G.handCount[j], expectedHandCounts[j]);
