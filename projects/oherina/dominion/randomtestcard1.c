@@ -60,7 +60,8 @@ void testBaron(int random_seed) {
 		 * CALCULATE EXPECTED RESULTS
 		 */
 		// number of baron cards - may have added more random
-		int expectedBaronCount = getCount(G.hand[currPlayer], G.handCount[currPlayer], baron) - 1;
+		int currentBaronCount = getCount(G.hand[currPlayer], G.handCount[currPlayer], baron);
+		int expectedBaronCount =  currentBaronCount- 1;
 		// number of estate cards - may have added more random
 		int currentEstateCountHand = getCount(G.hand[currPlayer], G.handCount[currPlayer], estate);
 		int expectedEstateCountHand;
@@ -102,12 +103,15 @@ void testBaron(int random_seed) {
 			// discard unchanged
 			expectedDiscardCount = G.discardCount[currPlayer];
 		}
-		
+
+		printf("Choice to discard estate and gain coins: %d\n", choice1);
+		printf("Current number of estates in hand: %d\n", currentEstateCountHand);
+		printf("Current number of estates in supply: %d\n", G.supplyCount[estate]);
 		int result = baronEffect(card, choice1, &G, handPos);
 		
 		printf("BARON - TRIAL %d\n", n);
 		printf("1) Function successful.\n");
-		assert("Function returns >= 0 (Success)", result >= 0, 0);
+		assert("Function returns >= 0 (Success)", result >= 0, TRUE);
 		
 		printf("2) Baron card played.\n");
 		assert("Baron removed from hand.", getCount(G.hand[currPlayer], G.handCount[currPlayer], baron), expectedBaronCount);
