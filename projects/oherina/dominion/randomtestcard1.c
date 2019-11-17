@@ -66,8 +66,8 @@ void testBaron(int random_seed) {
 		int expectedEstateCountHand;
 		int expectedEstateCountSupply;
 		int expectedHandCount;
-		int expectedPlayedCardCount = state.playedCardCount + 1;	// played baron
-		int expectedDeckCount = state.deckCount[currPlayer];
+		int expectedPlayedCardCount = G.playedCardCount + 1;	// played baron
+		int expectedDeckCount = G.deckCount[currPlayer];
 		int expectedCoinCount;
 		int expectedDiscardCount;	
 		int discarded = FALSE;
