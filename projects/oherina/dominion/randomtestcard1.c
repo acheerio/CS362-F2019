@@ -66,8 +66,8 @@ void testBaron(int random_seed) {
 		int expectedEstateCountHand;
 		int expectedEstateCountSupply;
 		int expectedHandCount;
-		int expectedPlayedCardCount = playedCardCount + 1;	// played baron
-		int expectedDeckCount = deckCount[currPlayer];
+		int expectedPlayedCardCount = state.playedCardCount + 1;	// played baron
+		int expectedDeckCount = state.deckCount[currPlayer];
 		int expectedCoinCount;
 		int expectedDiscardCount;	
 		int discarded = FALSE;
@@ -81,7 +81,7 @@ void testBaron(int random_seed) {
 			expectedHandCount = G.handCount[currPlayer] - 2; // played baron, discarded estate
 			expectedCoinCount = G.coins + 4;	
 			// discard has additional estate (from hand)
-			expectedDiscardCount = discardCount[currPlayer] + 1;
+			expectedDiscardCount = state.discardCount[currPlayer] + 1;
 		}
 		// option 2 did not discard, must gain if possible
 		else if (G.supplyCount[estate] > 0) {
@@ -116,9 +116,9 @@ void testBaron(int random_seed) {
 		
 		printf("3) Correct estates in hand, deck, supply, discard.\n");
 		assert("Estate card, if any, removed from hand.", getCount(G.hand[currPlayer], G.handCount[currPlayer], estate), expectedEstateCountHand);
-		assert("Deck unchanged.", G.deckCount[currPlayer], expectedDeckCount)
-		assert("Number of estates in supply as expected.", G.supplyCount[estate], expectedEstateCountSupply)
-		assert("Number of cards in discard as expected.", G.discardCount[G.whoseTurn], discardCountExpected);
+		assert("Deck unchanged.", G.deckCount[currPlayer], expectedDeckCount);
+		assert("Number of estates in supply as expected.", G.supplyCount[estate], expectedEstateCountSupply);
+		assert("Number of cards in discard as expected.", G.discardCount[G.whoseTurn], expectedDiscardCount);
 		if (gained || discarded) {
 			assert("Estate card at top of discard pile.", G.discard[G.whoseTurn][G.discardCount[G.whoseTurn] - 1], estate);
 		}
