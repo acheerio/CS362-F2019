@@ -54,15 +54,15 @@ void testBaron(int random_seed) {
 
 		int card = baron;
 		int choice1 = myrand(0, 2); // > 0, chose to discard estate
-		int handPos = 0; // baron card in position 1
+		int handPos = 0; // baron card in position 0
 
 		/*
 		 * CALCULATE EXPECTED RESULTS
 		 */
-		// number of baron cards - may have added more random
+		// number of baron cards - may have added when filling hand
 		int currentBaronCount = getCount(G.hand[currPlayer], G.handCount[currPlayer], baron);
 		int expectedBaronCount =  currentBaronCount- 1;
-		// number of estate cards - may have added more random
+		// number of estate cards - may have added when filling hand
 		int currentEstateCountHand = getCount(G.hand[currPlayer], G.handCount[currPlayer], estate);
 		int expectedEstateCountHand;
 		int expectedEstateCountSupply;
@@ -128,7 +128,7 @@ void testBaron(int random_seed) {
 		}
 
 		printf("4) Correct number of coins.\n");
-		char *coinStatement = discarded ? "Gained 4 coins" : "Coins unchanged";
+		char *coinStatement = discarded ? "Gained 4 coins." : "Coins unchanged.";
 		assert(coinStatement, G.coins, expectedCoinCount);
 		
 		printf("5) Correct number of cards in hand.\n");
