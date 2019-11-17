@@ -100,7 +100,7 @@ void testBaron(int random_seed) {
 			expectedHandCount = G.handCount[currPlayer];
 			expectedCoinCount = G.coins;
 			// discard unchanged
-			expectedDiscardCount = discardCount[currPlayer];
+			expectedDiscardCount = G.discardCount[currPlayer];
 		}
 		
 		int result = baronEffect(card, choice1, &G, handPos);
