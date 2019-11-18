@@ -20,6 +20,7 @@ void testTribute(int random_seed) {
 		int card = tribute;
 		// generate random number of players, currentPlayer
 		int numPlayers = myrand(2, 5);
+		printf("Total players: %d\n", numPlayers);
 		int currPlayer = myrand(0, numPlayers);
 		int nextPlayer = (currPlayer + 1) % numPlayers;
 		// generate random kingdom cards
