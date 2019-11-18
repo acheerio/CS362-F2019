@@ -108,6 +108,7 @@ void testMinion(int random_seed) {
 			for (j = 0; j < numPlayers; j++) {
 				// hands
 				expectedHandCounts[j] = G.handCount[j];
+				if (curr) { expectedHandCounts[j] -= 1; } // minion card was played
 				// deck
 				expectedDeckCounts[j] = G.deckCount[j];
 				// discard
@@ -122,10 +123,12 @@ void testMinion(int random_seed) {
 			expectedActionCount = G.numActions + 1;
 			for (j = 0; j < numPlayers; j++) {
 				bool curr = (j == G.whoseTurn);
-				if (curr || expectedHandCounts[j] > 4) {
+				if (curr || G.handCount[j] > 4) {
+					if (G.handCount[j] > 4) {
 					expectedHandCounts[j] = 4;
 					expectedDeckCounts[j] = G.deckCount[j] - 4; // drew cards from deck
 					expectedDiscardCounts[j] = G.discardCount[j] + G.handCount[j];
+					}
 					if (curr) { expectedDiscardCounts[j] -= 1; } // minion card was played not discarded
 				}
 				else {
