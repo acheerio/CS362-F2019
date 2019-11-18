@@ -10,7 +10,7 @@
 
 void testBaron(int random_seed) {
 	int n;
-	int NUMRUNS = 50;
+	int NUMRUNS = 75;
 	for (n = 0; n < NUMRUNS; n++) {
 		printf("BARON - TRIAL %d\n", n + 1);
 		/*
