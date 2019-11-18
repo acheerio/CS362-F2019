@@ -45,6 +45,8 @@ void testBaron(int random_seed) {
 		G.supplyCount[estate] = myrand(0, 3);
 		// randomize coins
 		G.coins = myrand(0, INT_MAX - 4);
+		// randomize buys
+		G.numBuys = myrand(0, INT_MAX - 1);
 		
 		// check values
 		if (DEBUG) {
@@ -71,7 +73,8 @@ void testBaron(int random_seed) {
 		int expectedPlayedCardCount = G.playedCardCount + 1;	// played baron
 		int expectedDeckCount = G.deckCount[currPlayer];
 		int expectedCoinCount;
-		int expectedDiscardCount;	
+		int expectedDiscardCount;
+		int expectedBuyCount = G.numBuys + 1;
 		int discarded = FALSE;
 		int gained = FALSE;
 
@@ -133,6 +136,10 @@ void testBaron(int random_seed) {
 		
 		printf("5) Correct number of cards in hand.\n");
 		assert("Hand count correct.", G.handCount[G.whoseTurn], expectedHandCount);
+
+		printf("6) Buys increased +1.\n");
+		assert("Buys +1.", G.numBuys, expectedBuyCount);
+
 		printf("\n\n");
 	}
 }
