@@ -9,11 +9,12 @@ typedef enum bool {FALSE, TRUE} bool;
 
 bool assert(char * assertion, int a, int b);
 int min(int a, int b);
+int max(int a, int b);
 int myrand(int range_start, int range_end_exclusive);
 //int getCount(int player, int card, struct gameState state);
 int getCount(int arr[], int size, int card);
 int countSupply(struct gameState state);
-int getRandomFromSupply(struct gameState *state, startIndex, endIndex);
+int getRandomFromSupply(struct gameState *state);
 void selectKingdomCardsWith(int random_seed, int kCards[], int include);
 void fillHand(int currPlayer, int startIndex, int handCount, struct gameState *state);
 // generate random hand (count, include specific card)

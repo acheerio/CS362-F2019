@@ -8,7 +8,7 @@
 #include "interface.h"
 #include "randomhelper.h"
 
-void testMinion(int random_seed) {
+void testTribute(int random_seed) {
 	int n, i, j;
 	int NUMRUNS = 25;
 	for (n = 0; n < NUMRUNS; n++) {
@@ -68,7 +68,7 @@ void testMinion(int random_seed) {
 			printDiscard(currPlayer, &G); // discard count 0
 		}
 
-		int handPos = 0; // minion card in position 0
+		int handPos = 0; // tribute card in position 0
 
 		/*
 		 * CALCULATE EXPECTED RESULTS
