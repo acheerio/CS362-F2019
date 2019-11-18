@@ -10,8 +10,9 @@
 
 void testBaron(int random_seed) {
 	int n;
-	int NUMRUNS = 25;
+	int NUMRUNS = 50;
 	for (n = 0; n < NUMRUNS; n++) {
+		printf("BARON - TRIAL %d\n", n + 1);
 		/*
 		 * GENERATE RANDOM GAME
 		 */
@@ -109,7 +110,6 @@ void testBaron(int random_seed) {
 		printf("Current number of estates in supply: %d\n", G.supplyCount[estate]);
 		int result = baronEffect(card, choice1, &G, handPos);
 		
-		printf("BARON - TRIAL %d\n", n);
 		printf("1) Function successful.\n");
 		assert("Function returns >= 0 (Success)", result >= 0, TRUE);
 		

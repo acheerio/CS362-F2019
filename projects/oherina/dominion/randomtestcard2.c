@@ -12,6 +12,7 @@ void testMinion(int random_seed) {
 	int n, i, j;
 	int NUMRUNS = 25;
 	for (n = 0; n < NUMRUNS; n++) {
+		printf("MINION - TRIAL %d\n", n + 1);
 		/*
 		 * GENERATE RANDOM GAME
 		 */
@@ -103,7 +104,7 @@ void testMinion(int random_seed) {
 			expectedMinionCount = currentMinionCount - 1;
 			expectedCoinCount = G.coins + 2;
 			expectedPlayedCardCount = G.playedCardCount + 1;
-			expectedActionCount = G.numActions + 2;
+			expectedActionCount = G.numActions + 1;
 			for (j = 0; j < numPlayers; j++) {
 				// hands
 				expectedHandCounts[j] = G.handCount[j];
@@ -118,7 +119,7 @@ void testMinion(int random_seed) {
 			expectedMinionCount = currentMinionCount - 1;
 			expectedCoinCount = G.coins;
 			expectedPlayedCardCount = G.playedCardCount + 1;
-			expectedActionCount = G.numActions + 2;
+			expectedActionCount = G.numActions + 1;
 			for (j = 0; j < numPlayers; j++) {
 				bool curr = (j == G.whoseTurn);
 				if (curr || expectedHandCounts[j] > 4) {
@@ -138,7 +139,6 @@ void testMinion(int random_seed) {
 
 		int result = minionEffect(card, choice1, choice2, &G, handPos);
 		
-		printf("Minion - TRIAL %d\n", n);
 		printf("1) Function successful if either choice1 or choice2 (not both or neither).\n");
 		char *successStatement = expectedResult ? "Function returns >= 0 (Success)." : "Function returns < 0 (Failure).";
 		assert(successStatement, result >= 0, expectedResult);
@@ -149,7 +149,7 @@ void testMinion(int random_seed) {
 			assert("Minion placed at top of played cards.", G.playedCards[G.playedCardCount - 1], minion);
 		}
 		else {
-			assert("Minion in hand.", G.hand[currPlayer][0], card);
+			assert("Minion still in hand.", G.hand[currPlayer][0], card);
 		}
 		int minionCount = getCount(G.hand[currPlayer], G.handCount[currPlayer], minion) + 
 			getCount(G.deck[currPlayer], G.deckCount[currPlayer], minion) +
@@ -165,12 +165,10 @@ void testMinion(int random_seed) {
 		printf("5) Hands discarded and redrawn correctly (or unchanged) per success and choice.\n");
 		for (j = 0; j < numPlayers; j++) {
 			printf("Player %d:\n", j);
+			printf("Hand: %d, Deck: %d, Discard: %d\n", G.handCount[j], G.deckCount[j], G.discardCount[j]);
 			assert("Hand count correct.", G.handCount[j], expectedHandCounts[j]);
-			expectedHandCounts[j] = G.handCount[j];
 			assert("Deck count correct.", G.deckCount[j], expectedDeckCounts[j]);
-			expectedDeckCounts[j] = G.deckCount[j];
 			assert("Discard count correct.", G.discardCount[j], expectedDiscardCounts[j]);
-			expectedDiscardCounts[j] = G.discardCount[j];
 		}
 
 		printf("\n\n");
