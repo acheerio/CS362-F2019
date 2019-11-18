@@ -83,6 +83,7 @@ void testMinion(int random_seed) {
 		int expectedDiscardCounts[numPlayers];
 		int expectedActionCount;
 
+		bool curr = (j == G.whoseTurn);
 		// option 0 - no change, return failure
 		if ((choice1 && choice2) || (!choice1 && !choice2)) {
 			expectedResult = FALSE; // failure
@@ -122,7 +123,6 @@ void testMinion(int random_seed) {
 			expectedPlayedCardCount = G.playedCardCount + 1;
 			expectedActionCount = G.numActions + 1;
 			for (j = 0; j < numPlayers; j++) {
-				bool curr = (j == G.whoseTurn);
 				if (curr || G.handCount[j] > 4) {
 					if (G.handCount[j] > 4) {
 					expectedHandCounts[j] = 4;
