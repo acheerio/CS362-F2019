@@ -9,7 +9,7 @@
 #include "randomhelper.h"
 
 void testTribute(int random_seed) {
-	int n, i, j;
+	int n, i;
 	int NUMRUNS = 25;
 	for (n = 0; n < NUMRUNS; n++) {
 		printf("TRIBUTE - TRIAL %d\n", n + 1);
@@ -152,7 +152,7 @@ void testTribute(int random_seed) {
 		int handCountStatement = randomDraw ? G.handCount[currPlayer] >= expectedHandCount : G.handCount[currPlayer] == expectedHandCount;
 		assert("Hand count +2 per Victory card.", handCountStatement, TRUE);
 		int deckCountStatement = randomDraw ? G.deckCount[currPlayer] <= expectedDeckCount : G.deckCount[currPlayer] == expectedDeckCount;
-		assert("Deck count -2 per Victory card." deckCountStatement, TRUE);
+		assert("Deck count -2 per Victory card.", deckCountStatement, TRUE);
 		int coinsStatement = randomDraw ? G.coins >= expectedCoinCount : G.coins == expectedCoinCount;
 		assert("Coins +2 per Treasure card.", coinsStatement, TRUE);
 		int actionsStatement = randomDraw ? G.numActions >= expectedActionCount : G.numActions == expectedActionCount;
