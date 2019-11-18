@@ -229,6 +229,8 @@ int tributeEffect(int card, struct gameState *state, int handPos) {
 	    tributeRevealedCards[1] = -1;
 	}
 
+    printf("Tribute 0: %d  1: %d\n", tributeRevealedCards[0], tributeRevealedCards[1]);
+
 	for (i = 0; i <= 2; i ++) {
 	    if (tributeRevealedCards[i] == copper || tributeRevealedCards[i] == silver || tributeRevealedCards[i] == gold) { //Treasure cards
 	        state->coins += 2;
