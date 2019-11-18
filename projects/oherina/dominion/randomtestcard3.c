@@ -102,8 +102,9 @@ void testTribute(int random_seed) {
 					tributeCount++;
 				}
 			}
-			// If discard exceeds tribute cards needed, we don't know which will be randomly selected
 			else {
+				printf("Random draw - discard pile has multiple tribute options.\n");
+				printf("We can't predict the random shuffle so tests use >= not ==.\n");
 				randomDraw = TRUE;
 			}
 		}
@@ -148,6 +149,9 @@ void testTribute(int random_seed) {
 		assert("Correct number of cards in next player's deck.", G.deckCount[nextPlayer], expectedNextDeckCount);
 		assert("Correct number of cards in next player's discard.", G.discardCount[nextPlayer], expectedNextDiscardCount);
 
+		//if (DEBUG) {
+		printf("Hand: %d Deck: %d Coins: %d Actions: %d\n", G.handCount[currPlayer], G.deckCount[currPlayer], G.coins, G.numActions);
+		//}
 		printf("4) Current player gained expected bonuses for tribute.\n");
 		int handCountStatement = randomDraw ? G.handCount[currPlayer] >= expectedHandCount : G.handCount[currPlayer] == expectedHandCount;
 		assert("Hand count +2 per Victory card.", handCountStatement, TRUE);
