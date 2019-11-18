@@ -42,7 +42,7 @@ void testMinion(int random_seed) {
 		// fills other hands from supply
 		for (i = 0; i < numPlayers; i++) {
 			if (i != currPlayer) {
-				int otherHandCount = myrand(0, 8);
+				int otherHandCount = myrand(0, 10);
 				printf("Player %d: %d card(s).\n", i, otherHandCount);
 				G.handCount[i] = otherHandCount;
 				fillHand(i, 0, otherHandCount, &G);
@@ -165,8 +165,10 @@ void testMinion(int random_seed) {
 
 		printf("5) Hands discarded and redrawn correctly (or unchanged) per success and choice.\n");
 		for (j = 0; j < numPlayers; j++) {
-			printf("Player %d:\n", j);
-			printf("Hand: %d, Deck: %d, Discard: %d\n", G.handCount[j], G.deckCount[j], G.discardCount[j]);
+			if (DEBUG) {
+				printf("Player %d:\n", j);
+				printf("Hand: %d, Deck: %d, Discard: %d\n", G.handCount[j], G.deckCount[j], G.discardCount[j]);
+			}
 			assert("Hand count correct.", G.handCount[j], expectedHandCounts[j]);
 			assert("Deck count correct.", G.deckCount[j], expectedDeckCounts[j]);
 			assert("Discard count correct.", G.discardCount[j], expectedDiscardCounts[j]);

@@ -23,6 +23,15 @@ int min(int a, int b) {
 	}
 }
 
+int max(int a, int b) {
+	if (a > b) {
+		return a;
+	}
+	else {
+		return b;
+	}
+}
+
 int myrand(int range_start, int range_end_exclusive) {
 	int range = range_end_exclusive - range_start;
 	int num = (rand() % range) + range_start;
@@ -59,6 +68,15 @@ int countSupply(struct gameState state) {
 		count += state.supplyCount[i];
 	}
 	return count;
+}
+
+int getRandomFromSupply(struct gameState *state) {
+	int rand;
+	do {
+		rand = myrand(0, NUM_TOTAL_K_CARDS);
+	} while (state->supplyCount[rand] == 0);
+	state->supplyCount[rand]--;
+	return rand;
 }
 
 void selectKingdomCardsWith(int random_seed, int kCards[], int include) {

@@ -13,6 +13,7 @@ int myrand(int range_start, int range_end_exclusive);
 //int getCount(int player, int card, struct gameState state);
 int getCount(int arr[], int size, int card);
 int countSupply(struct gameState state);
+int getRandomFromSupply(struct gameState *state, startIndex, endIndex);
 void selectKingdomCardsWith(int random_seed, int kCards[], int include);
 void fillHand(int currPlayer, int startIndex, int handCount, struct gameState *state);
 // generate random hand (count, include specific card)
