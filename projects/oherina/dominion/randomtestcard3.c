@@ -35,6 +35,7 @@ void testTribute(int random_seed) {
 		// fill current player's random hand, from 1 (tribute only) to 3 cards
 		int handCount = myrand(1, 4);
 		G.handCount[currPlayer] = handCount;
+		printf("Current Player %d: %d card(s).\n", currPlayer, handCount);
 		G.hand[currPlayer][0] = card;
 		int startIndex = 1;
 		fillHand(currPlayer, startIndex, handCount, &G);
