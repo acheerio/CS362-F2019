@@ -10,7 +10,7 @@
 
 void testBaron(int random_seed) {
 	int n;
-	int NUMRUNS = 100;
+	int NUMRUNS = 50;
 	for (n = 0; n < NUMRUNS; n++) {
 		printf("BARON - TRIAL %d\n", n + 1);
 		/*
@@ -41,8 +41,8 @@ void testBaron(int random_seed) {
 		// fills hand from supply
 		int startIndex = 1 + estatesInHand;
 		fillHand(currPlayer, startIndex, handCount, &G);
-		// random estates in supply, either 0 or 1
-		G.supplyCount[estate] = myrand(0, 2);
+		// random estates in supply, 0, 1, 2
+		G.supplyCount[estate] = myrand(0, 3);
 		// randomize coins
 		G.coins = myrand(0, INT_MAX - 4);
 		

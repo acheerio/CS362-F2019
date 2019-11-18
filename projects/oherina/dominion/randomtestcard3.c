@@ -10,7 +10,7 @@
 
 void testTribute(int random_seed) {
 	int n, i;
-	int NUMRUNS = 100;
+	int NUMRUNS = 50;
 	for (n = 0; n < NUMRUNS; n++) {
 		printf("TRIBUTE - TRIAL %d\n", n + 1);
 		/*
