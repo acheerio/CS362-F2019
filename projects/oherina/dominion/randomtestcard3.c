@@ -36,7 +36,7 @@ void testTribute(int random_seed) {
 		// fill current player's random hand, from 1 (tribute only) to 3 cards
 		int handCount = myrand(1, 4);
 		G.handCount[currPlayer] = handCount;
-		printf("Current Player %d: %d card(s).\n", currPlayer, handCount);
+		printf("Current player: %d.\n", currPlayer);
 		G.hand[currPlayer][0] = card;
 		int startIndex = 1;
 		fillHand(currPlayer, startIndex, handCount, &G);
@@ -151,9 +151,9 @@ void testTribute(int random_seed) {
 		assert("Correct number of cards in next player's deck.", G.deckCount[nextPlayer], expectedNextDeckCount);
 		assert("Correct number of cards in next player's discard.", G.discardCount[nextPlayer], expectedNextDiscardCount);
 
-		//if (DEBUG) {
-		printf("Hand: %d Deck: %d Coins: %d Actions: %d\n", G.handCount[currPlayer], G.deckCount[currPlayer], G.coins, G.numActions);
-		//}
+		if (DEBUG) {
+			printf("Hand: %d Deck: %d Coins: %d Actions: %d\n", G.handCount[currPlayer], G.deckCount[currPlayer], G.coins, G.numActions);
+		}
 		printf("4) Current player gained expected bonuses for tribute.\n");
 		int handCountStatement = randomDraw ? G.handCount[currPlayer] >= expectedHandCount : G.handCount[currPlayer] == expectedHandCount;
 		assert("Hand count +2 per Victory card.", handCountStatement, TRUE);
