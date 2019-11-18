@@ -10,7 +10,7 @@
 
 void testMinion(int random_seed) {
 	int n, i, j;
-	int NUMRUNS = 25;
+	int NUMRUNS = 100;
 	for (n = 0; n < NUMRUNS; n++) {
 		printf("MINION - TRIAL %d\n", n + 1);
 		/*
