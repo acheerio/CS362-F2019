@@ -28,11 +28,10 @@ void mineTest1(struct gameState state) {
 	int cardToGain = silver;
 	int supplyCountExpected = state.supplyCount[cardToGain] - 1;
 	
-	int card = mine;
 	int choice1 = 1; // index of card to trash
 	int choice2 = cardToGain; // value of card to gain
 	
-	int result = mineEffect(card, choice1, choice2, &state, handPos);
+	int result = mineEffect(choice1, choice2, &state, handPos, state.whoseTurn);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
@@ -81,11 +80,10 @@ void mineTest2(struct gameState state) {
 	int cardToGain = gold;
 	int supplyCountExpected = state.supplyCount[cardToGain] - 1;
 	
-	int card = mine;
 	int choice1 = 1; // index of card to trash
 	int choice2 = cardToGain; // value of card to gain
 	
-	int result = mineEffect(card, choice1, choice2, &state, handPos);
+	int result = mineEffect(choice1, choice2, &state, handPos, state.whoseTurn);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
@@ -134,11 +132,10 @@ void mineTest3(struct gameState state) {
 	int cardToGain = silver;
 	int supplyCountExpected = state.supplyCount[cardToGain] - 1;
 	
-	int card = mine;
 	int choice1 = 1; // index of card to trash
 	int choice2 = cardToGain; // value of card to gain
 	
-	int result = mineEffect(card, choice1, choice2, &state, handPos);
+	int result = mineEffect(choice1, choice2, &state, handPos, state.whoseTurn);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
@@ -187,11 +184,10 @@ void mineTest4(struct gameState state) {
 	state.supplyCount[cardToGain] = 1;
 	int supplyCountExpected = state.supplyCount[cardToGain] - 1;
 	
-	int card = mine;
 	int choice1 = 1; // index of card to trash
 	int choice2 = cardToGain; // value of card to gain
 	
-	int result = mineEffect(card, choice1, choice2, &state, handPos);
+	int result = mineEffect(choice1, choice2, &state, handPos, state.whoseTurn);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
@@ -238,11 +234,10 @@ void mineTest5(struct gameState state) {
 	int cardToGain = gold;
 	int supplyCountExpected = state.supplyCount[cardToGain] - 1;
 	
-	int card = mine;
 	int choice1 = 1; // index of card to trash
 	int choice2 = cardToGain; // value of card to gain
 	
-	int result = mineEffect(card, choice1, choice2, &state, handPos);
+	int result = mineEffect(choice1, choice2, &state, handPos, state.whoseTurn);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
@@ -289,11 +284,10 @@ void mineTest6(struct gameState state) {
 	int cardToGain = gold;
 	int supplyCountExpected = state.supplyCount[cardToGain];
 	
-	int card = mine;
 	int choice1 = 1; // index of card to trash
 	int choice2 = cardToGain; // value of card to gain
 	
-	int result = mineEffect(card, choice1, choice2, &state, handPos);
+	int result = mineEffect(choice1, choice2, &state, handPos, state.whoseTurn);
 	
 	printf("1) Function error.\n");
 	assert("Function returns < 0 (Error)", result < 0, TRUE);
@@ -339,11 +333,10 @@ void mineTest7(struct gameState state) {
 	int cardToGain = gold;
 	int supplyCountExpected = state.supplyCount[cardToGain];
 	
-	int card = mine;
 	int choice1 = 3; // index of card to trash
 	int choice2 = cardToGain; // value of card to gain
 	
-	int result = mineEffect(card, choice1, choice2, &state, handPos);
+	int result = mineEffect(choice1, choice2, &state, handPos, state.whoseTurn);
 	
 	printf("1) Function error.\n");
 	assert("Function returns < 0 (Error)", result < 0, TRUE);
@@ -389,11 +382,10 @@ void mineTest8(struct gameState state) {
 	int cardToGain = province;
 	int supplyCountExpected = state.supplyCount[cardToGain];
 	
-	int card = mine;
 	int choice1 = 1; // index of card to trash
 	int choice2 = cardToGain; // value of card to gain
 	
-	int result = mineEffect(card, choice1, choice2, &state, handPos);
+	int result = mineEffect(choice1, choice2, &state, handPos, state.whoseTurn);
 	
 	printf("1) Function error.\n");
 	assert("Function returns < 0 (Error)", result < 0, TRUE);
@@ -441,11 +433,10 @@ void mineTest9(struct gameState state) {
 	state.supplyCount[cardToGain] = 0;
 	int supplyCountExpected = state.supplyCount[cardToGain];
 	
-	int card = mine;
 	int choice1 = 1; // index of card to trash
 	int choice2 = cardToGain; // value of card to gain
 	
-	int result = mineEffect(card, choice1, choice2, &state, handPos);
+	int result = mineEffect(choice1, choice2, &state, handPos, state.whoseTurn);
 	
 	printf("1) Function error.\n");
 	assert("Function returns < 0 (Error)", result < 0, TRUE);
@@ -493,11 +484,10 @@ void mineTest10(struct gameState state) {
 	state.supplyCount[cardToGain] = 0;
 	int supplyCountExpected = state.supplyCount[cardToGain];
 	
-	int card = mine;
 	int choice1 = 1; // index of card to trash
 	int choice2 = cardToGain; // value of card to gain
 	
-	int result = mineEffect(card, choice1, choice2, &state, handPos);
+	int result = mineEffect(choice1, choice2, &state, handPos, state.whoseTurn);
 	
 	printf("1) Function error.\n");
 	assert("Function returns < 0 (Error)", result < 0, TRUE);
@@ -544,11 +534,10 @@ void mineTest11(struct gameState state) {
 	int cardToGain = -1;
 	int supplyCountExpected = state.supplyCount[cardToGain];
 	
-	int card = mine;
 	int choice1 = 1; // index of card to trash
 	int choice2 = cardToGain; // value of card to gain
 	
-	int result = mineEffect(card, choice1, choice2, &state, handPos);
+	int result = mineEffect(choice1, choice2, &state, handPos, state.whoseTurn);
 	
 	printf("1) Function error.\n");
 	assert("Function returns < 0 (Error)", result < 0, TRUE);
