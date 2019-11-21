@@ -37,7 +37,7 @@ void ambassadorTest1(struct gameState state) {
 	int choice1 = 1; // index of card to discard to supply
 	int choice2 = 1; // number of cards to discard to supply
 	
-	int result = ambassadorEffect(card, choice1, choice2, &state, handPos);
+	int result = ambassadorEffect(choice1, choice2, &state, handPos, state.whoseTurn);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
@@ -96,7 +96,7 @@ void ambassadorTest2(struct gameState state) {
 	int choice1 = 3; // index of card to discard to supply
 	int choice2 = 1; // number of cards to discard to supply
 	
-	int result = ambassadorEffect(card, choice1, choice2, &state, handPos);
+	int result = ambassadorEffect(choice1, choice2, &state, handPos, state.whoseTurn);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
@@ -153,7 +153,7 @@ void ambassadorTest3(struct gameState state) {
 	int choice1 = 2; // index of card to discard to supply
 	int choice2 = 0; // number of cards to discard to supply
 	
-	int result = ambassadorEffect(card, choice1, choice2, &state, handPos);
+	int result = ambassadorEffect(choice1, choice2, &state, handPos, state.whoseTurn);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
@@ -213,7 +213,7 @@ void ambassadorTest4(struct gameState state) {
 	int choice1 = 2; // index of card to discard to supply
 	int choice2 = 0; // number of cards to discard to supply
 	
-	int result = ambassadorEffect(card, choice1, choice2, &state, handPos);
+	int result = ambassadorEffect(choice1, choice2, &state, handPos, state.whoseTurn);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
@@ -271,7 +271,7 @@ void ambassadorTest5(struct gameState state) {
 	int choice1 = 0; // index of card to discard to supply
 	int choice2 = 1; // number of cards to discard to supply
 	
-	int result = ambassadorEffect(card, choice1, choice2, &state, handPos);
+	int result = ambassadorEffect(choice1, choice2, &state, handPos, state.whoseTurn);
 	
 	printf("1) Function throws error.\n");
 	assert("Function returns < 0 (Error)", result < 0, TRUE);
@@ -326,7 +326,7 @@ void ambassadorTest6(struct gameState state) {
 	int choice1 = 2; // index of card to discard to supply
 	int choice2 = 0; // number of cards to discard to supply
 	
-	int result = ambassadorEffect(card, choice1, choice2, &state, handPos);
+	int result = ambassadorEffect(choice1, choice2, &state, handPos, state.whoseTurn);
 	
 	printf("1) Function throws error.\n");
 	assert("Function returns < 0 (Error)", result < 0, TRUE);
@@ -384,7 +384,7 @@ void ambassadorTest7(struct gameState state) {
 	int choice1 = 1; // index of card to discard to supply
 	int choice2 = 3; // number of cards to discard to supply
 	
-	int result = ambassadorEffect(card, choice1, choice2, &state, handPos);
+	int result = ambassadorEffect(choice1, choice2, &state, handPos, state.whoseTurn);
 	
 	printf("1) Function throws error.\n");
 	assert("Function returns < 0 (Error)", result < 0, TRUE);
@@ -440,7 +440,7 @@ void ambassadorTest8(struct gameState state) {
 	int choice1 = 1; // index of card to discard to supply
 	int choice2 = 2; // number of cards to discard to supply
 	
-	int result = ambassadorEffect(card, choice1, choice2, &state, handPos);
+	int result = ambassadorEffect(choice1, choice2, &state, handPos, state.whoseTurn);
 	
 	printf("1) Function throws error.\n");
 	assert("Function returns < 0 (Error)", result < 0, TRUE);
