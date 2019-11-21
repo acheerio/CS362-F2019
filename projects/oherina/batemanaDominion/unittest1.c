@@ -1,5 +1,6 @@
 #include "dominion.h"
 #include "dominion_helpers.h"
+#include "testhelper.h"
 #include <stdlib.h>
 #include <stdio.h>
 
