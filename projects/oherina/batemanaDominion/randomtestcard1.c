@@ -56,13 +56,12 @@ void testBaron(int random_seed) {
 
 		int card = baron;
 		int choice1 = myrand(0, 2); // > 0, chose to discard estate
-		int handPos = 0; // baron card in position 0
 
 		/*
 		 * CALCULATE EXPECTED RESULTS
 		 */
 		// number of baron cards - may have added when filling hand
-		int currentBaronCount = getCount(G.hand[currPlayer], G.handCount[currPlayer], baron);
+		int currentBaronCount = getCount(G.hand[currPlayer], G.handCount[currPlayer], card);
 		int expectedBaronCount =  currentBaronCount- 1;
 		// number of estate cards - may have added when filling hand
 		int currentEstateCountHand = getCount(G.hand[currPlayer], G.handCount[currPlayer], estate);

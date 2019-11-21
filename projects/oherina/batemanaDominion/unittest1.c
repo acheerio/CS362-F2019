@@ -19,11 +19,9 @@ void baronTest1(struct gameState state) {
 	state.discardCount[state.whoseTurn] = 0;
 	int discardCountExpected = state.discardCount[state.whoseTurn] + 1; 
 	
-	int card = baron;
 	int choice1 = 1; // choose to discard estate
-	int handPos = 1; // baron card in position 1
 	
-	int result = choice1, &state, handPos);
+	int result = baronEffect(choice1, &state, state.whoseTurn);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, 0);
@@ -60,9 +58,7 @@ void baronTest2(struct gameState state) {
 	state.hand[state.whoseTurn][1] = estate;
 	state.discardCount[state.whoseTurn] = 0;
 	int discardCountExpected = state.discardCount[state.whoseTurn] + 1; 
-	int card = baron;
 	int choice1 = 1; // choose to discard estate
-	int handPos = 0; // baron card in position 1
 	
 	int result = baronEffect(choice1, &state, state.whoseTurn);
 	
@@ -103,9 +99,7 @@ void baronTest3(struct gameState state) {
 	state.hand[state.whoseTurn][0] = baron;
 	state.discardCount[state.whoseTurn] = 1;
 	int discardCountExpected = state.discardCount[state.whoseTurn] + 1;
-	int card = baron;
 	int choice1 = 1; // choose to discard estate
-	int handPos = 0; // baron card in position 1
 	
 	int result = baronEffect(choice1, &state, state.whoseTurn);
 	
@@ -145,9 +139,7 @@ void baronTest4(struct gameState state) {
 	state.hand[state.whoseTurn][0] = baron;
 	state.discardCount[state.whoseTurn] = 1;
 	int discardCountExpected = state.discardCount[state.whoseTurn] + 1;
-	int card = baron;
 	int choice1 = 1; // choose to discard estate
-	int handPos = 0; // baron card in position 1
 	
 	int result = baronEffect(choice1, &state, state.whoseTurn);
 	
@@ -187,9 +179,7 @@ void baronTest5(struct gameState state) {
 	state.hand[state.whoseTurn][0] = baron;
 	state.discardCount[state.whoseTurn] = 1;
 	int discardCountExpected = state.discardCount[state.whoseTurn];
-	int card = baron;
 	int choice1 = 1; // choose to discard estate
-	int handPos = 0; // baron card in position 1
 	
 	int result = baronEffect(choice1, &state, state.whoseTurn);
 	
@@ -230,9 +220,7 @@ void baronTest6(struct gameState state) {
 	state.hand[state.whoseTurn][0] = baron;
 	state.discardCount[state.whoseTurn] = 1;
 	int discardCountExpected = state.discardCount[state.whoseTurn] + 1;
-	int card = baron;
 	int choice1 = 0; // choose to gain estate
-	int handPos = 0; // baron card in position 1
 	
 	int result = baronEffect(choice1, &state, state.whoseTurn);
 	
@@ -272,9 +260,7 @@ void baronTest7(struct gameState state) {
 	state.hand[state.whoseTurn][0] = baron;
 	state.discardCount[state.whoseTurn] = 1;
 	int discardCountExpected = state.discardCount[state.whoseTurn] + 1;
-	int card = baron;
 	int choice1 = 0; // choose to gain estate
-	int handPos = 0; // baron card in position 1
 	
 	int result = baronEffect(choice1, &state, state.whoseTurn);
 	
@@ -314,9 +300,7 @@ void baronTest8(struct gameState state) {
 	state.hand[state.whoseTurn][0] = baron;
 	state.discardCount[state.whoseTurn] = 1;
 	int discardCountExpected = state.discardCount[state.whoseTurn];
-	int card = baron;
 	int choice1 = 0; // choose to gain estate
-	int handPos = 0; // baron card in position 1
 	
 	int result = baronEffect(choice1, &state, state.whoseTurn);
 	
