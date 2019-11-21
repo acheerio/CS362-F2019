@@ -69,8 +69,6 @@ void testTribute(int random_seed) {
 			printDiscard(currPlayer, &G); // discard count 0
 		}
 
-		int handPos = 0; // tribute card in position 0
-
 		/*
 		 * CALCULATE EXPECTED RESULTS
 		 */
