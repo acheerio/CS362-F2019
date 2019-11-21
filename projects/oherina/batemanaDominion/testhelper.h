@@ -2,6 +2,7 @@
 #define TESTHELPER_H
 
 #include "dominion.h"
+#include "interface.h"
 
 #define K_CARD_MIN 7  // adventurer
 #define K_CARD_MAX 26 // treasure_map
