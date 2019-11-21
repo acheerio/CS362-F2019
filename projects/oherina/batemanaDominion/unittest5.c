@@ -41,9 +41,10 @@ void tributeTest1(struct gameState state) {
 	int coinsExpected = state.coins + 2;
 	state.numActions = 1;
 	int numActionsExpected = state.numActions;
+	int tributeRevealedCards[2] = {-1, -1};
 	
 	int card = tribute;
-	int result = tributeEffect(card, &state, handPos);
+	int result = tributeEffect(&state, nextPlayer, tributeRevealedCards, state.whoseTurn);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
@@ -106,9 +107,10 @@ void tributeTest2(struct gameState state) {
 	int coinsExpected = state.coins;
 	state.numActions = 1;
 	int numActionsExpected = state.numActions;
+	int tributeRevealedCards[2] = {-1, -1};
 	
 	int card = tribute;
-	int result = tributeEffect(card, &state, handPos);
+	int result = tributeEffect(&state, nextPlayer, tributeRevealedCards, state.whoseTurn);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);

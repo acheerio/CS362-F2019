@@ -136,7 +136,8 @@ void testTribute(int random_seed) {
 			}
 		}
 
-		int result = tributeEffect(card, &G, handPos);
+		int tributeRevealedCards[2] = {-1, -1};
+		int result = tributeEffect(&G, nextPlayer, tributeRevealedCards, currPlayer);
 
 		printf("1) Function successful.\n");
 		assert("Function returns >= 0 (Success).", result >= 0, TRUE);
