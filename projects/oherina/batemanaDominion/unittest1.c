@@ -23,7 +23,7 @@ void baronTest1(struct gameState state) {
 	int choice1 = 1; // choose to discard estate
 	int handPos = 1; // baron card in position 1
 	
-	int result = baronEffect(card, choice1, &state, handPos);
+	int result = choice1, &state, handPos);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, 0);
@@ -64,7 +64,7 @@ void baronTest2(struct gameState state) {
 	int choice1 = 1; // choose to discard estate
 	int handPos = 0; // baron card in position 1
 	
-	int result = baronEffect(card, choice1, &state, handPos);
+	int result = baronEffect(choice1, &state, state.whoseTurn);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
@@ -107,7 +107,7 @@ void baronTest3(struct gameState state) {
 	int choice1 = 1; // choose to discard estate
 	int handPos = 0; // baron card in position 1
 	
-	int result = baronEffect(card, choice1, &state, handPos);
+	int result = baronEffect(choice1, &state, state.whoseTurn);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
@@ -149,7 +149,7 @@ void baronTest4(struct gameState state) {
 	int choice1 = 1; // choose to discard estate
 	int handPos = 0; // baron card in position 1
 	
-	int result = baronEffect(card, choice1, &state, handPos);
+	int result = baronEffect(choice1, &state, state.whoseTurn);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
@@ -191,7 +191,7 @@ void baronTest5(struct gameState state) {
 	int choice1 = 1; // choose to discard estate
 	int handPos = 0; // baron card in position 1
 	
-	int result = baronEffect(card, choice1, &state, handPos);
+	int result = baronEffect(choice1, &state, state.whoseTurn);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
@@ -234,7 +234,7 @@ void baronTest6(struct gameState state) {
 	int choice1 = 0; // choose to gain estate
 	int handPos = 0; // baron card in position 1
 	
-	int result = baronEffect(card, choice1, &state, handPos);
+	int result = baronEffect(choice1, &state, state.whoseTurn);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
@@ -276,7 +276,7 @@ void baronTest7(struct gameState state) {
 	int choice1 = 0; // choose to gain estate
 	int handPos = 0; // baron card in position 1
 	
-	int result = baronEffect(card, choice1, &state, handPos);
+	int result = baronEffect(choice1, &state, state.whoseTurn);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
@@ -318,7 +318,7 @@ void baronTest8(struct gameState state) {
 	int choice1 = 0; // choose to gain estate
 	int handPos = 0; // baron card in position 1
 	
-	int result = baronEffect(card, choice1, &state, handPos);
+	int result = baronEffect(choice1, &state, state.whoseTurn);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
