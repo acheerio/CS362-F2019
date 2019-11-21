@@ -31,8 +31,9 @@
 
 #define COMPARE(string1, string2) strncmp(string1, string2, 4)
 #define MAX_STRING_LENGTH 32
-#define TRUE 1
-#define FALSE 0
+// #define TRUE 1
+// #define FALSE 0
+// these are defined as enums below
 
 #define SUCCESS 0
 #define FAILURE -1
@@ -84,6 +85,7 @@
 #define TREASURE_MAP_COST 4
 #define ONETHOUSAND 1000
 
+typedef enum bool {FALSE, TRUE} bool;
 
 int addCardToHand(int player, int card, struct gameState *game);
 

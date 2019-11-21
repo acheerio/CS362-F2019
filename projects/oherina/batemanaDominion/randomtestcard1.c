@@ -109,7 +109,7 @@ void testBaron(int random_seed) {
 		printf("Choice to discard estate and gain coins: %d\n", choice1);
 		printf("Current number of estates in hand: %d\n", currentEstateCountHand);
 		printf("Current number of estates in supply: %d\n", G.supplyCount[estate]);
-		int result = baronEffect(choice1, &G, state.whoseTurn);
+		int result = baronEffect(choice1, &G, G.whoseTurn);
 		
 		printf("1) Function successful.\n");
 		assert("Function returns >= 0 (Success)", result >= 0, TRUE);
