@@ -137,7 +137,7 @@ void testMinion(int random_seed) {
 			}
 		}
 
-		int result = minionEffect(card, choice1, choice2, &G, handPos);
+		int result = minionEffect(choice1, choice2, &G, handPos, curr);
 		
 		printf("1) Function successful if either choice1 or choice2 (not both or neither).\n");
 		char *successStatement = expectedResult ? "Function returns >= 0 (Success)." : "Function returns < 0 (Failure).";

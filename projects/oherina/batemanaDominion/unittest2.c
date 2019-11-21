@@ -23,11 +23,10 @@ void minionTest1(struct gameState state) {
 	state.hand[state.whoseTurn][0] = minion;
 	int handPos = 0; // minion card in position 0
 	
-	int card = minion;
 	int choice1 = 1; // chose to gain coins
 	int choice2 = 0;
 	
-	int result = minionEffect(card, choice1, choice2, &state, handPos);
+	int result = minionEffect(choice1, choice2, &state, handPos, state.whoseTurn);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
@@ -77,12 +76,11 @@ void minionTest2(struct gameState state) {
 	state.numActions = 1;
 	int numActionsExpected = state.numActions + 1;
 	
-	int card = minion;
 	int choice1 = 0; 
 	int choice2 = 1; // chose to discard and redraw
 	int handPos = 0; // minion card in position 0
 	
-	int result = minionEffect(card, choice1, choice2, &state, handPos);
+	int result = minionEffect(choice1, choice2, &state, handPos, state.whoseTurn);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
@@ -140,12 +138,11 @@ void minionTest3(struct gameState state) {
 	state.numActions = 1;
 	int numActionsExpected = state.numActions + 1;
 	
-	int card = minion;
 	int choice1 = 0; 
 	int choice2 = 1; // chose to discard and redraw
 	int handPos = 0; // minion card in position 0
 	
-	int result = minionEffect(card, choice1, choice2, &state, handPos);
+	int result = minionEffect(choice1, choice2, &state, handPos, state.whoseTurn);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
@@ -205,12 +202,11 @@ void minionTest4(struct gameState state) {
 	state.numActions = 1;
 	int numActionsExpected = state.numActions + 1;
 	
-	int card = minion;
 	int choice1 = 0; 
 	int choice2 = 1; // chose to discard and redraw
 	int handPos = 0; // minion card in position 0
 	
-	int result = minionEffect(card, choice1, choice2, &state, handPos);
+	int result = minionEffect(choice1, choice2, &state, handPos, state.whoseTurn);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
@@ -271,12 +267,11 @@ void minionTest5(struct gameState state) {
 	state.numActions = 1;
 	int numActionsExpected = state.numActions + 1;
 	
-	int card = minion;
 	int choice1 = 0; 
 	int choice2 = 1; // chose to discard and redraw
 	int handPos = 0; // minion card in position 0
 	
-	int result = minionEffect(card, choice1, choice2, &state, handPos);
+	int result = minionEffect(choice1, choice2, &state, handPos, state.whoseTurn);
 	
 	printf("1) Function successful.\n");
 	assert("Function returns >= 0 (Success)", result >= 0, TRUE);
@@ -332,12 +327,11 @@ void minionTest6(struct gameState state) {
 	state.coins = 2;
 	int coinsExpected = state.coins;
 	
-	int card = minion;
-	int choice1 = 1; 
+	int choice1 = 1;
 	int choice2 = 1;
 	int handPos = 0; // minion card in position 0
 	
-	int result = minionEffect(card, choice1, choice2, &state, handPos);
+	int result = minionEffect(choice1, choice2, &state, handPos, state.whoseTurn);
 	
 	printf("1) Function returns error.\n");
 	assert("Function returns < 0 (Failure)", result < 0, TRUE);
@@ -391,12 +385,11 @@ void minionTest7(struct gameState state) {
 	state.coins = 2;
 	int coinsExpected = state.coins;
 	
-	int card = minion;
 	int choice1 = 0; 
 	int choice2 = 0;
 	int handPos = 0; // minion card in position 0
 	
-	int result = minionEffect(card, choice1, choice2, &state, handPos);
+	int result = minionEffect(choice1, choice2, &state, handPos, state.whoseTurn);
 	
 	printf("1) Function returns error.\n");
 	assert("Function returns < 0 (Failure)", result < 0, TRUE);
