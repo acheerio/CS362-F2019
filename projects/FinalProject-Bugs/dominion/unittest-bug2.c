@@ -12,13 +12,13 @@ int main () {
     // declare the game state
     struct gameState G;
 
-    printf("Begin Bug #1 test:\n");
+    printf("Begin Bug #2 unit test:\n");
     
     memset(&G, 23, sizeof(struct gameState)); // set the game state
     initializeGame(2, k, 123, &G); // initialize a new game
 
-    // Get initial played card count 
-    int initialPlayedCardCount = G.playedCardCount;
+    // Get initial handcount of current player
+    int initialHandCount = G.handCount[0];
     // Add silver to player 0's hand
     G.hand[0][4] = silver;
     int coinBonus;
@@ -27,11 +27,10 @@ int main () {
     cardEffect(mine, 4, gold, 0, &G, 0, &coinBonus);
 
     // verify that your asserts pass, for the bugs your asserts may fail
-    // playedCardCount should only go up by 1, which is the mine card being played
-    if (assertIntEquals(initialPlayedCardCount + 1, G.playedCardCount)) {
-        printf("Bug #1 (incorrect discardCard function parameters in mine card) test passed.\n");
+    if (assertIntEquals(initialHandCount, G.handCount[0]) && assertIntEquals(G.hand[0][4], gold)) {
+        printf("Bug #2 (incorrect cost calculations in mine card) test passed.\n");
     } else {
-        printf("Bug #1 (incorrect discardCard function parameters in mine card) test failed.\n");
+        printf("Bug #2 (incorrect cost calculations in mine card) test failed.\n");
     }
 
     return 0;
