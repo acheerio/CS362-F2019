@@ -1,5 +1,6 @@
 #include "dominion.h"
 #include "dominion_helpers.h"
+#include "unittest_helpers.h"
 #include "rngs.h"
 #include <stdio.h>
 #include <math.h>
@@ -10,6 +11,13 @@ int compare(const void* a, const void* b) {
         return 1;
     if (*(int*)a < *(int*)b)
         return -1;
+    return 0;
+}
+
+int assertIntEquals(int a, int b) {
+    if (a == b) {
+        return 1;
+    }
     return 0;
 }
 
