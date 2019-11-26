@@ -30,7 +30,7 @@ int main () {
     int nextPlayer = 1;
     G.deckCount[nextPlayer] = 2;
     G.deck[nextPlayer][0] = estate;
-    G.deck[nextPlayer][1] = estate;
+    G.deck[nextPlayer][1] = duchy;
 
     G.coins = 0;
     int bonus = 0;
