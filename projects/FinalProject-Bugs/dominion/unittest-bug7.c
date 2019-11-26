@@ -34,14 +34,14 @@ int main () {
 
     G.coins = 0;
     int bonus = 0;
-    int numActions = 0;
+    G.numActions = 0;
 
-    int result = cardEffect(tribute, -1, -1, -1, &G, handPos, &bonus)
+    int result = cardEffect(tribute, -1, -1, -1, &G, handPos, &bonus);
 
     assertPrint("Function was successful.", result, 0);
     assertPrint("Current player has 4 cards in hand.", G.handCount[currentPlayer], 4);
     assertPrint("Current player drew 4 cards from deck.", G.deckCount[currentPlayer], 2);
-    assertPrint("Coins unchanged (bonus).", G.bonus, 0);
+    assertPrint("Coins unchanged (bonus).", bonus, 0);
     assertPrint("Coins unchanged (state->coins).", G.coins, 0);
     assertPrint("Actions unchanged.", G.numActions, 0);
 
