@@ -6,7 +6,7 @@
 
 int main () {
 
-    int k[10] = { adventurer, council_room, feast, gardens, mine, remodel, ambassador, tribute, baron, minion };
+    int k[10] = { adventurer, council_room, great_hall, gardens, mine, remodel, ambassador, tribute, baron, minion };
     // declare the game state
     int numPlayers = 2;
     int seed = 1;
@@ -28,9 +28,11 @@ int main () {
     }
 
     int nextPlayer = 1;
-    G.deckCount[nextPlayer] = 2;
+    G.deckCount[nextPlayer] = 4;
     G.deck[nextPlayer][0] = estate;
     G.deck[nextPlayer][1] = duchy;
+    G.deck[nextPlayer][2] = gardens;
+    G.deck[nextPlayer][3] = great_hall;
 
     G.coins = 0;
     int bonus = 0;
