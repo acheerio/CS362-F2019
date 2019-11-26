@@ -24,11 +24,11 @@ int assertIntEquals(int a, int b) {
 int assertPrint(char * assertion, int a, int b) {
     if (a == b) {
         printf("   PASSED: %s\n", assertion);
-        return TRUE;
+        return 1;
     }
     else {
         printf("   FAILED: %s\n", assertion);
-        return FALSE;
+        return 0;
     }
 }
 
