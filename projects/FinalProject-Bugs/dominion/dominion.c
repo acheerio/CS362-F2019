@@ -21,6 +21,17 @@ int assertIntEquals(int a, int b) {
     return 0;
 }
 
+int assertPrint(char * assertion, int a, int b) {
+    if (a == b) {
+        printf("   PASSED: %s\n", assertion);
+        return TRUE;
+    }
+    else {
+        printf("   FAILED: %s\n", assertion);
+        return FALSE;
+    }
+}
+
 struct gameState* newGame() {
     struct gameState* g = malloc(sizeof(struct gameState));
     return g;

@@ -5,5 +5,7 @@
 #include "dominion.h"
 
 int assertIntEquals(int a, int b);
+int assertPrint(char * assertion, int a, int b);
+
 
 #endif
