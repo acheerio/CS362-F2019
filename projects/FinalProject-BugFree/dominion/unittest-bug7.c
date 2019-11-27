@@ -1,0 +1,52 @@
+#include "dominion.h"
+#include "dominion_helpers.h"
+#include "unittest_helpers.h"
+#include <string.h>
+#include <stdio.h>
+
+int main () {
+
+    int k[10] = { adventurer, council_room, great_hall, gardens, mine, remodel, ambassador, tribute, baron, minion };
+    // declare the game state
+    int numPlayers = 2;
+    int seed = 1;
+    struct gameState G;
+    memset(&G, 23, sizeof(struct gameState)); // set the game state
+    initializeGame(numPlayers, k, seed, &G); // initialize a new game
+
+    printf("Begin Bug #7 (tributeRevealedCards index out of bounds) test:\n");
+
+    int card = tribute;
+    int handPos = 0;
+    int currentPlayer = 0;
+    G.handCount[currentPlayer] = 1;
+    G.hand[currentPlayer][handPos] = card;
+    G.deckCount[currentPlayer] = 6;
+    int i;
+    for (i = 0; i < G.deckCount[currentPlayer]; i++) {
+    	G.deck[currentPlayer][i] = copper;
+    }
+
+    int nextPlayer = 1;
+    G.deckCount[nextPlayer] = 4;
+    G.deck[nextPlayer][0] = estate;
+    G.deck[nextPlayer][1] = duchy;
+    G.deck[nextPlayer][2] = gardens;
+    G.deck[nextPlayer][3] = great_hall;
+
+    G.coins = 0;
+    int bonus = 0;
+    G.numActions = 0;
+
+    int result = cardEffect(tribute, -1, -1, -1, &G, handPos, &bonus);
+
+    assertPrint("Function was successful.", result, 0);
+    assertPrint("Current player has 4 cards in hand.", G.handCount[currentPlayer], 4);
+    assertPrint("Current player drew 4 cards from deck.", G.deckCount[currentPlayer], 2);
+    assertPrint("Coins unchanged (bonus).", bonus, 0);
+    assertPrint("Coins unchanged (state->coins).", G.coins, 0);
+    assertPrint("Actions unchanged.", G.numActions, 0);
+    printf("\n");
+
+    return 0;
+}
