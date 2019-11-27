@@ -29,10 +29,12 @@ int main () {
 
     // Assert that game is over after setting three supply piles to be 0
     if (assertIntEquals(isGameOverInitial, 0) && assertIntEquals(isGameOverFinal, 1)) {
-        printf("Bug #4 (incorrect logic in isGameOver function) test passed.\n");
+        printf("   PASSED: Bug #4 (incorrect logic in isGameOver function) test.\n");
     } else {
-        printf("Bug #4 (incorrect logic in isGameOver function) test failed.\n");
+        printf("   FAILED: Bug #4 (incorrect logic in isGameOver function) test.\n");
     }
+
+    printf("\n");
 
     return 0;
 }

@@ -32,10 +32,12 @@ int main () {
 
     // Assert that one of the cards in the discard pile is a silver.
     if (assertIntEquals(G.discard[0][0], silver) || assertIntEquals(G.discard[0][1], silver)) {
-        printf("Bug #3 (incorrect cost calculations in remodel card) test passed.\n");
+        printf("   PASSED: Bug #3 (incorrect cost calculations in remodel card) test.\n");
     } else {
-        printf("Bug #3 (incorrect cost calculations in remodel card) test failed.\n");
+        printf("   FAILED: Bug #3 (incorrect cost calculations in remodel card) test.\n");
     }
+
+    printf("\n");
 
     return 0;
 }

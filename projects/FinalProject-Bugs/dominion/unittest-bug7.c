@@ -14,7 +14,7 @@ int main () {
     memset(&G, 23, sizeof(struct gameState)); // set the game state
     initializeGame(numPlayers, k, seed, &G); // initialize a new game
 
-    printf("Begin Bug #7 unit test: Tribute card effect\n");
+    printf("Begin Bug #7 (tributeRevealedCards index out of bounds) test:\n");
 
     int card = tribute;
     int handPos = 0;
@@ -46,6 +46,7 @@ int main () {
     assertPrint("Coins unchanged (bonus).", bonus, 0);
     assertPrint("Coins unchanged (state->coins).", G.coins, 0);
     assertPrint("Actions unchanged.", G.numActions, 0);
+    printf("\n");
 
     return 0;
 }

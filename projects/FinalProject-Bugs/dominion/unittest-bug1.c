@@ -12,7 +12,7 @@ int main () {
     // declare the game state
     struct gameState G;
 
-    printf("Begin Bug #1 test:\n");
+    printf("Begin Bug #1 (incorrect discardCard function parameters in mine card) test:\n");
     
     memset(&G, 23, sizeof(struct gameState)); // set the game state
     initializeGame(2, k, 123, &G); // initialize a new game
@@ -29,10 +29,12 @@ int main () {
     // verify that your asserts pass, for the bugs your asserts may fail
     // playedCardCount should only go up by 1, which is the mine card being played
     if (assertIntEquals(initialPlayedCardCount + 1, G.playedCardCount)) {
-        printf("Bug #1 (incorrect discardCard function parameters in mine card) test passed.\n");
+        printf("   PASSED: Bug #1 (incorrect discardCard function parameters in mine card) test.\n");
     } else {
-        printf("Bug #1 (incorrect discardCard function parameters in mine card) test failed.\n");
+        printf("   FAILED: Bug #1 (incorrect discardCard function parameters in mine card) test.\n");
     }
+
+    printf("\n");
 
     return 0;
 }

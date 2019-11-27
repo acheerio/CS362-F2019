@@ -28,10 +28,12 @@ int main () {
 
     // Neither of the cards in the player's hand should be gold
     if (!assertIntEquals(G.hand[0][0], gold) && !assertIntEquals(G.hand[0][1], gold)) {
-        printf("Bug #2 (incorrect cost calculations in mine card) test 1 passed.\n");
+        printf("   PASSED: Bug #2 (incorrect cost calculations in mine card) test 1.\n");
     } else {
-        printf("Bug #2 (incorrect cost calculations in mine card) test 1 failed.\n");
+        printf("   FAILED: Bug #2 (incorrect cost calculations in mine card) test 1.\n");
     }
+
+    printf("\n");
 
     printf("Begin Bug #2 unit test 2:\n");
 
@@ -48,11 +50,11 @@ int main () {
 
     // One of the cards in the player's hand should be copper
     if (assertIntEquals(G.hand[0][0], copper) || assertIntEquals(G.hand[0][1], copper)) {
-        printf("Bug #2 (incorrect cost calculations in mine card) test 2 passed.\n");
+        printf("   PASSED: Bug #2 (incorrect cost calculations in mine card) test 2.\n");
     } else {
-        printf("Bug #2 (incorrect cost calculations in mine card) test 2 failed.\n");
+        printf("   FAILED: Bug #2 (incorrect cost calculations in mine card) test 2.\n");
     }
-
+    printf("\n");
 
     return 0;
 }

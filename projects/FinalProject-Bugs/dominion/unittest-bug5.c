@@ -15,6 +15,7 @@ void test1(struct gameState state) {
 
     int score = scoreFor(0, &state);
     assertPrint("The current player should have a score of 2.", score, 2);
+    printf("\n");
 }
 
 void test2(struct gameState state) {
@@ -28,6 +29,7 @@ void test2(struct gameState state) {
 
     int score = scoreFor(0, &state);
     assertPrint("The current player should have a score of 0.", score, 0);
+    printf("\n");
 }
 
 int main () {
