@@ -12,7 +12,7 @@ int main () {
     // declare the game state
     struct gameState G;
 
-    printf("Begin Bug #2 unit test 1:\n");
+    printf("Begin Bug #2 (incorrect cost calculations in mine card) unit test 1:\n");
     
     memset(&G, 23, sizeof(struct gameState)); // set the game state
     initializeGame(2, k, 123, &G); // initialize a new game
@@ -28,14 +28,14 @@ int main () {
 
     // Neither of the cards in the player's hand should be gold
     if (!assertIntEquals(G.hand[0][0], gold) && !assertIntEquals(G.hand[0][1], gold)) {
-        printf("   PASSED: Bug #2 (incorrect cost calculations in mine card) test 1.\n");
+        printf("   PASSED: Cannot trash copper to gain gold.\n");
     } else {
-        printf("   FAILED: Bug #2 (incorrect cost calculations in mine card) test 1.\n");
+        printf("   FAILED: Cannot trash copper to gain gold.\n");
     }
 
     printf("\n");
 
-    printf("Begin Bug #2 unit test 2:\n");
+    printf("Begin Bug #2 (incorrect cost calculations in mine card) unit test 2:\n");
 
     memset(&G, 23, sizeof(struct gameState)); // set the game state
     initializeGame(2, k, 123, &G); // initialize a new game
@@ -50,9 +50,9 @@ int main () {
 
     // One of the cards in the player's hand should be copper
     if (assertIntEquals(G.hand[0][0], copper) || assertIntEquals(G.hand[0][1], copper)) {
-        printf("   PASSED: Bug #2 (incorrect cost calculations in mine card) test 2.\n");
+        printf("   PASSED: Able to trash silver to gain copper.\n");
     } else {
-        printf("   FAILED: Bug #2 (incorrect cost calculations in mine card) test 2.\n");
+        printf("   FAILED: Able to trash silver to gain copper.\n");
     }
     printf("\n");
 

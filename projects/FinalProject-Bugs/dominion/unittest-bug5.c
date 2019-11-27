@@ -5,7 +5,7 @@
 #include <stdio.h>
 
 void test1(struct gameState state) {
-    printf("Begin Bug #5 unit test 1: deckCount > discardCount\n");
+    printf("Begin Bug #5 (incorrect deck count in scoreFor) unit test 1: deckCount > discardCount\n");
     int currentPlayer = 0;
     state.handCount[currentPlayer] = 0;
     state.discardCount[currentPlayer] = 0;
@@ -19,7 +19,7 @@ void test1(struct gameState state) {
 }
 
 void test2(struct gameState state) {
-    printf("Begin Bug #5 unit test 2: deckCount < discardCount\n");
+    printf("Begin Bug #5 (incorrect deck count in scoreFor) unit test 2: deckCount < discardCount\n");
     int currentPlayer = 0;
     state.handCount[currentPlayer] = 0;
     state.discardCount[currentPlayer] = 2;

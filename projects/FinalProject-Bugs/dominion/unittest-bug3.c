@@ -12,7 +12,7 @@ int main () {
     // declare the game state
     struct gameState G;
 
-    printf("Begin Bug #3 unit test:\n");
+    printf("Begin Bug #3 (incorrect cost calculations in remodel card) unit test:\n");
     
     memset(&G, 23, sizeof(struct gameState)); // set the game state
     initializeGame(2, k, 123, &G); // initialize a new game
@@ -32,9 +32,9 @@ int main () {
 
     // Assert that one of the cards in the discard pile is a silver.
     if (assertIntEquals(G.discard[0][0], silver) || assertIntEquals(G.discard[0][1], silver)) {
-        printf("   PASSED: Bug #3 (incorrect cost calculations in remodel card) test.\n");
+        printf("   PASSED: Able to trash estate to gain silver.\n");
     } else {
-        printf("   FAILED: Bug #3 (incorrect cost calculations in remodel card) test.\n");
+        printf("   FAILED: Able to trash estate to gain silver.\n");
     }
 
     printf("\n");

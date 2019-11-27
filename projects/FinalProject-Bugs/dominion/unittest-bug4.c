@@ -12,7 +12,7 @@ int main () {
     // declare the game state
     struct gameState G;
 
-    printf("Begin Bug #4 unit test:\n");
+    printf("Begin Bug #4 (incorrect logic in isGameOver function) unit test:\n");
     
     memset(&G, 23, sizeof(struct gameState)); // set the game state
     initializeGame(2, k, 123, &G); // initialize a new game
@@ -29,9 +29,9 @@ int main () {
 
     // Assert that game is over after setting three supply piles to be 0
     if (assertIntEquals(isGameOverInitial, 0) && assertIntEquals(isGameOverFinal, 1)) {
-        printf("   PASSED: Bug #4 (incorrect logic in isGameOver function) test.\n");
+        printf("   PASSED: Game is over when 3 supply piles (including sea_hag, treasure_map) are empty.\n");
     } else {
-        printf("   FAILED: Bug #4 (incorrect logic in isGameOver function) test.\n");
+        printf("   FAILED: Game is over when 3 supply piles (including sea_hag, treasure_map) are empty.\n");
     }
 
     printf("\n");
