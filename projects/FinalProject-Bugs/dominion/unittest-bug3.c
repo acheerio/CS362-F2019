@@ -19,7 +19,7 @@ int main () {
 
     // Set up player 0's hand
     G.hand[0][0] = remodel;
-    G.hand[0][1] = estate;
+    G.hand[0][1] = duchy;
     G.handCount[0] = 2;
     // Set player 0's discard pile to be empty
     G.discard[0][1] = -1;
@@ -28,13 +28,13 @@ int main () {
     int coinBonus;
 
     // Call cardEffect function
-    cardEffect(remodel, 1, silver, 0, &G, 0, &coinBonus);
+    cardEffect(remodel, 1, gold, 0, &G, 0, &coinBonus);
 
-    // Assert that one of the cards in the discard pile is a silver.
-    if (assertIntEquals(G.discard[0][0], silver) || assertIntEquals(G.discard[0][1], silver)) {
-        printf("   PASSED: Able to trash estate to gain silver.\n");
+    // Assert that one of the cards in the discard pile is a gold.
+    if (assertIntEquals(G.discard[0][0], gold) || assertIntEquals(G.discard[0][1], gold)) {
+        printf("   PASSED: Able to trash duchy to gain gold.\n");
     } else {
-        printf("   FAILED: Able to trash estate to gain silver.\n");
+        printf("   FAILED: Able to trash duchy to gain gold.\n");
     }
 
     printf("\n");
