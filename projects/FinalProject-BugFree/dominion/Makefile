@@ -47,4 +47,4 @@ player: player.c interface.o
 all: playdom player 
 
 clean:
-	rm -f *.o unittest-bug1 unittest-bug1.exe unittest-bug2 unittest-bug2.exe unittest-bug3 unittest-bug3.exe playdom.exe unittest-bug4 unittest-bug4.exe unittest-bug5 unittest-bug7 playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
+	rm -f *.o unittest-bug1 unittest-bug1.exe unittest-bug2 unittest-bug2.exe unittest-bug3 unittest-bug3.exe playdom.exe unittest-bug4 unittest-bug4.exe unittest-bug5 unittest-bug6 unittest-bug7 playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
