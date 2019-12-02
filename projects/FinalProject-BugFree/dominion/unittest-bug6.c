@@ -28,6 +28,7 @@ int main () {
     assertPrint("Function unsuccessful.", result, -1);
     assertPrint("Gold not taken from supply.", G.supplyCount[gold], 30);
     assertPrint("Gold not gained to discard.", G.discardCount[currentPlayer], 0);
+    printf("\n");
 
     return 0;
 }
