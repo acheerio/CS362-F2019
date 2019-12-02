@@ -705,7 +705,6 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
     int i;
     int j;
     int k;
-    int x;
     int index;
     int currentPlayer = whoseTurn(state);
     int nextPlayer = currentPlayer + 1;
@@ -770,14 +769,13 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 
     case feast:
         //gain card with cost up to 5
-        int result = 0;
-
         //Backup hand
         for (i = 0; i <= state->handCount[currentPlayer]; i++) {
             temphand[i] = state->hand[currentPlayer][i];//Backup card
             state->hand[currentPlayer][i] = -1;//Set to nothing
         }
         //Backup hand
+        int result = 0;
 
         //Update Coins for Buy
         updateCoins(currentPlayer, state, 5);
