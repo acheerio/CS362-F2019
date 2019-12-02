@@ -23,6 +23,8 @@ void test2(struct gameState state) {
     int currentPlayer = 0;
     state.handCount[currentPlayer] = 0;
     state.discardCount[currentPlayer] = 2;
+    state.discard[currentPlayer][0] = silver;
+    state.discard[currentPlayer][1] = silver;
     state.deckCount[currentPlayer] = 0;
     state.deck[currentPlayer][0] = estate;
     state.deck[currentPlayer][1] = estate;
