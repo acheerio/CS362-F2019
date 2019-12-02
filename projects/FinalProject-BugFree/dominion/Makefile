@@ -21,12 +21,13 @@ runtests: testDrawCard
 	gcov dominion.c >> unittestresult.out
 	cat dominion.c.gcov >> unittestresult.out
 
-unittests: unittest-bug1.c unittest-bug2.c unittest-bug3.c unittest-bug4.c unittest-bug5.c unittest-bug7.c dominion.o rngs.o interface.o
+unittests: unittest-bug1.c unittest-bug2.c unittest-bug3.c unittest-bug4.c unittest-bug5.c unittest-bug6.c unittest-bug7.c dominion.o rngs.o interface.o
 	gcc -o unittest-bug1 unittest-bug1.c -g dominion.o rngs.o interface.o $(CFLAGS)
 	gcc -o unittest-bug2 unittest-bug2.c -g dominion.o rngs.o interface.o $(CFLAGS)
 	gcc -o unittest-bug3 unittest-bug3.c -g dominion.o rngs.o interface.o $(CFLAGS)
 	gcc -o unittest-bug4 unittest-bug4.c -g dominion.o rngs.o interface.o $(CFLAGS)
 	gcc -o unittest-bug5 unittest-bug5.c -g dominion.o rngs.o $(CFLAGS)
+	gcc -o unittest-bug6 unittest-bug6.c -g dominion.o rngs.o $(CFLAGS)
 	gcc -o unittest-bug7 unittest-bug7.c -g dominion.o rngs.o $(CFLAGS)
 
 unittestresults: unittests
@@ -35,6 +36,7 @@ unittestresults: unittests
 	./unittest-bug3 >> unittestresults.out
 	./unittest-bug4 >> unittestresults.out
 	./unittest-bug5 >> unittestresults.out
+	./unittest-bug6 >> unittestresults.out
 	./unittest-bug7 >> unittestresults.out
 	gcov -b -f dominion.c >> unittestresults.out
 	cat dominion.c.gcov >> unittestresults.out

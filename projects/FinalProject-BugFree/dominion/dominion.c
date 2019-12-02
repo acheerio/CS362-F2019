@@ -420,7 +420,7 @@ int isGameOver(struct gameState *state) {
 
     //if three supply pile are at 0, the game ends
     j = 0;
-    for (i = 0; i < 25; i++)
+    for (i = 0; i <= treasure_map; i++)
     {
         if (state->supplyCount[i] == 0)
         {
@@ -486,7 +486,7 @@ int scoreFor (int player, struct gameState *state) {
     }
 
     //score from deck
-    for (i = 0; i < state->discardCount[player]; i++)
+    for (i = 0; i < state->deckCount[player]; i++)
     {
         if (state->deck[player][i] == curse) {
             score = score - 1;
@@ -770,6 +770,8 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 
     case feast:
         //gain card with cost up to 5
+        int result = 0;
+
         //Backup hand
         for (i = 0; i <= state->handCount[currentPlayer]; i++) {
             temphand[i] = state->hand[currentPlayer][i];//Backup card
@@ -779,37 +781,34 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 
         //Update Coins for Buy
         updateCoins(currentPlayer, state, 5);
-        x = 1;//Condition to loop on
-        while( x == 1) {//Buy one card
-            if (supplyCount(choice1, state) <= 0) {
-                if (DEBUG)
-                    printf("None of that card left, sorry!\n");
+        if (supplyCount(choice1, state) <= 0) {
+            result = -1;
+            if (DEBUG)
+                printf("None of that card left, sorry!\n");
 
-                if (DEBUG) {
-                    printf("Cards Left: %d\n", supplyCount(choice1, state));
-                }
+            if (DEBUG) {
+                printf("Cards Left: %d\n", supplyCount(choice1, state));
             }
-            else if (state->coins < getCost(choice1)) {
-                printf("That card is too expensive!\n");
-
-                if (DEBUG) {
-                    printf("Coins: %d < %d\n", state->coins, getCost(choice1));
-                }
+        }
+        else if (state->coins < getCost(choice1)) {
+            printf("That card is too expensive!\n");
+            result = -1;
+            if (DEBUG) {
+                printf("Coins: %d < %d\n", state->coins, getCost(choice1));
             }
-            else {
+        }
+        else {
 
-                if (DEBUG) {
-                    printf("Deck Count: %d\n", state->handCount[currentPlayer] + state->deckCount[currentPlayer] + state->discardCount[currentPlayer]);
-                }
-
-                gainCard(choice1, state, 0, currentPlayer);//Gain the card
-                x = 0;//No more buying cards
-
-                if (DEBUG) {
-                    printf("Deck Count: %d\n", state->handCount[currentPlayer] + state->deckCount[currentPlayer] + state->discardCount[currentPlayer]);
-                }
-
+            if (DEBUG) {
+                printf("Deck Count: %d\n", state->handCount[currentPlayer] + state->deckCount[currentPlayer] + state->discardCount[currentPlayer]);
             }
+
+            gainCard(choice1, state, 0, currentPlayer);//Gain the card
+
+            if (DEBUG) {
+                printf("Deck Count: %d\n", state->handCount[currentPlayer] + state->deckCount[currentPlayer] + state->discardCount[currentPlayer]);
+            }
+
         }
 
         //Reset Hand
@@ -819,7 +818,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
         }
         //Reset Hand
 
-        return 0;
+        return result;
 
     case gardens:
         return -1;
